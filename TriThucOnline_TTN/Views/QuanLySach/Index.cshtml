@@ -1,6 +1,6 @@
 ﻿@using PagedList.Mvc;
 @using PagedList;
-@model PagedList.PagedList<TriThucOnline_TTN.Models.DAUSACH>
+@model PagedList.PagedList<TriThucOnline_TTN.Models.ViewModel.DAUSACHViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -9,6 +9,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="~/Content/bootstrap.min.css">
 <link rel="stylesheet" href="~/Content/Register/css/style.css">
+
 
 <style>
 
@@ -31,93 +32,177 @@
         width: 50px;
     }
 
-    .them-timkiem{
-        display : flex;
-        justify-content:space-between;
-        flex-direction : row-reverse;
-        margin : 12px 0px;
+    .timkiem {
+        position: relative;
+        left: 640px;
+    }
+
+    .btn-search {
+        position: relative;
+        left: 650px
     }
 </style>
 <h2>Quản lý Sách</h2>
 
 <div class="them-timkiem">
     @*@Html.ActionLink("Thêm mới sách", "ThemMoi")*@
-    <a href="@Url.Action("ThemMoi")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Thêm khóa học</a>
-    <form class="form-inline" action="/QuanLySach/search">
-        <input class="form-control mr-sm-2" type="search" name="search" id="search" value="@ViewBag.search" placeholder="Tên sách ...">
-        <a href="@Url.Action("Search")" class="btn btn-success"> Tìm kiếm</a>
-    </form>
-</div>
-<div id="Xoa_Sach">
-    @{ Html.RenderPartial("IndexPartial");}
-</div>
+    <a href="@Url.Action("ThemMoi")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Thêm sách</a>
 
-@* Tạo link liên kết các trang*@
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
-    <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
-    </div>
+</p>
+<div class="MenuTrang">
+    <div class="table-responsive">
+        @using (Html.BeginForm("Index", "QuanLyKHOAHOC", FormMethod.Get))
+        {
+            <input class="timkiem" type="text" name="search" placeholder="Search..." />
+            <select name="PageSize" aria-controls="example1" class="form-control input-sm" style="float:left; width:6%">
 
-    <script>
-        function delete_article(Id) {
-            var answer = confirm("Bạn có chắc muốn xóa sách này?");
-            if (answer) {
-                //alert('Xác nhận xóa');
-                Remove(Id);
-            }
-        }
-
-        function Remove(Id) {
-            $.ajax({
-                type: 'POST',
-                url: '/QuanLySach/Remove',
-                data: { id: Id },
-                success: function (data) {
-                    $.post(data.Url, function (partial) {
-                        $("#Xoa_Sach").html(partial);
-                    });
+                @for (int i = 0; i <= 25; i += 5)
+                {
+                    var select = "";
+                    if (i == ViewBag.PageSize)
+                    {
+                        select = "selected";
+                    }
+                    <option @select value="@i">@i</option>
                 }
-            });
+            </select>
+            <button class="btn-search" type="submit" name="submit">Tìm kiếm</button>
         }
-        function ChiTietSach(masach) {
-            $.ajax({
-                type: 'POST',
-                url: '/QuanLySach/XemCTSach',
-                data: { masach: masach },
-                success: function (data) {
-                    $.post(data.Url, function (partial) {
-                        $("#All_Dialog").html(partial)
-                    });
-                }
-            });
-            $('#myModal').on('shown.bs.modal', function () {
-                $(this).find('.modal-dialog').css({
-                    width: '935px',
-                    height: 'auto',
-                    'max-height': '100%',
-                    'max-width': '1000px',
-                });
-            });
-            $("#myModal").modal();
-        }
-    </script>
-    @* đây là cái bảng dialog *@
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Chi tiết sách</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    @* nội dung bên trong all_dialog *@
-                    <div id="All_Dialog"></div>
+        <table class="table table-condensed table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th width="80">
+                        <span class="text-primary">Mã</span>
+                    </th>
+                    <th>
+                        <span class="text-primary">Tên sách</span>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                </div>
+                    </th>
+                    <th>
+                        <span class="text-primary">Ảnh bìa</span>
+
+                    </th>
+                    <th>
+                        <span class="text-primary">Số lượng tồn</span>
+
+                    </th>
+                    <th>
+                        <span class="text-primary">khoá học</span>
+
+                    </th>
+                    <th>
+                        <span class="text-primary">NXB</span>
+
+                    </th>
+                    <th><span class="text-primary">Chức năng</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="80">
+                            @Html.DisplayFor(modelItem => item.MaSach)
+                        </td>
+                        <td width="200">
+                            @Html.DisplayFor(modelItem => item.TenSach)
+                        </td>
+                        <td>
+                            <div id="AnhBia">
+                                <img src="@Url.Content("~/Content/HinhAnhSP/"+item.PicBook)" class="img-responsive" style="width: 150px; height: auto" />
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuongTon)
+                        </td>
+                        <td>
+                            @Html.Raw(item.TenKhoaHoc)
+                           
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenNXB)
+                        </td>
+                        <td>
+
+                            <a href="/QuanLySach/ChinhSua?MaSach=@item.MaSach"><i class="far fa-edit"></i></a>
+                            <button onclick="ChiTietSach('@item.MaSach')"><i class="fas fa-info-circle"></i></button>
+                            <a href="@Url.Action("Delete","QuanLySach",new { id = item.MaSach })" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                <span class="fas fa-trash-alt"></span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                @Html.PagedListPager(Model, PageNum => Url.Action("Index", new { PageNum, search = Request.QueryString["search"], PageSize = Request.QueryString["PageSize"] }))
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    function delete_article(Id) {
+        var answer = confirm("Bạn có chắc muốn xóa sách này?");
+        if (answer) {
+            //alert('Xác nhận xóa');
+            Remove(Id);
+        }
+    }
+
+    function Remove(Id) {
+        $.ajax({
+            type: 'POST',
+            url: '/QuanLySach/Remove',
+            data: { id: Id },
+            success: function (data) {
+                $.post(data.Url, function (partial) {
+                    $("#Xoa_Sach").html(partial);
+                });
+            }
+        });
+    }
+    function ChiTietSach(masach) {
+        $.ajax({
+            type: 'POST',
+            url: '/QuanLySach/XemCTSach',
+            data: { masach: masach },
+            success: function (data) {
+                $.post(data.Url, function (partial) {
+                    $("#All_Dialog").html(partial)
+                });
+            }
+        });
+        $('#myModal').on('shown.bs.modal', function () {
+            $(this).find('.modal-dialog').css({
+                width: '935px',
+                height: 'auto',
+                'max-height': '100%',
+                'max-width': '1000px',
+            });
+        });
+        $("#myModal").modal();
+    }
+</script>
+@* đây là cái bảng dialog *@
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Chi tiết sách</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @* nội dung bên trong all_dialog *@
+                <div id="All_Dialog"></div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

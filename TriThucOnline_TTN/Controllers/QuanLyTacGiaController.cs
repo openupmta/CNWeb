@@ -15,19 +15,19 @@ namespace TriThucOnline_TTN.Controllers
     public class QuanLyTacGiaController : Controller
     {
         // GET: QuanLyTacGia
-        SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
-        public ActionResult Index(int? page)
+        SQL_KhoaHoc db = new SQL_KhoaHoc();
+        public ActionResult Index(int PageNum = 1, int PageSize = 5, string search = null)
         {
-            int pageNumber = (page ?? 1);
-            int pageSize = 10;
-            return View(db.TACGIAs.ToList().OrderBy(n => n.MaTG).ToPagedList(pageNumber, pageSize));
+            ViewBag.PageSize = PageSize;
+            var lst = db.Database.SqlQuery<TACGIA>("select tl.* from TACGIA as tl").ToList();
+
+            if (search != null)
+            {
+                lst = lst.Where(x => x.TenTG.ToLower().Trim().Contains(search.ToLower().Trim())).OrderByDescending(x => x.MaTG).ToList();
+            }
+            return View(lst.ToList().ToPagedList<TACGIA>(PageNum, PageSize));
         }
-        public PartialViewResult IndexPartial(int? page)
-        {
-            int pageNumber = (page ?? 1);
-            int pageSize = 10;
-            return PartialView(db.TACGIAs.ToList().OrderBy(n => n.MaTG).ToPagedList(pageNumber, pageSize));
-        }
+       
         /// <summary>
         /// Tao moi
         /// </summary>
@@ -80,10 +80,10 @@ namespace TriThucOnline_TTN.Controllers
         /// <param name="MaSach"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Edit(int MaTacGia)
+        public ActionResult Edit(int id)
         {
             //Lấy ra đối tượng sách theo mã 
-            TACGIA tg = db.TACGIAs.SingleOrDefault(n => n.MaTG == MaTacGia);
+            TACGIA tg = db.TACGIAs.SingleOrDefault(n => n.MaTG == id);
             if (tg == null)
             {
                 Response.StatusCode = 404;
@@ -121,37 +121,28 @@ namespace TriThucOnline_TTN.Controllers
 
         }
 
-        [HttpPost]
-        public JsonResult XemCTTG(int matg)
+        public ActionResult Delete(int id)
         {
-            TempData["matg"] = matg;
-            return Json(new { Url = Url.Action("XemCTTGPartial") });
-        }
-        public PartialViewResult XemCTTGPartial()
-        {
-            int maTG = (int)TempData["matg"];
-            var lstTG = db.TACGIAs.Where(n => n.MaTG == maTG).ToList();
-            return PartialView(lstTG);
-        }
-
-        /////////////////////
-        [HttpPost]
-        public JsonResult Remove(int id)
-        {
-            TACGIA tg = db.TACGIAs.SingleOrDefault(n => n.MaTG == id);
-            if (tg == null)
+            TACGIA cd = db.TACGIAs.SingleOrDefault(n => n.MaTG == id);
+            if (cd == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            var path = Path.Combine(Server.MapPath("~/Content/HinhAnhTG"), tg.PicTG);
-            if (System.IO.File.Exists(path))
-            {
-                System.IO.File.Delete(path);
-            }
-            db.TACGIAs.Remove(tg);
+            db.TACGIAs.Remove(cd);
             db.SaveChanges();
-            return Json(new { Url = Url.Action("IndexPartial") });
+            return RedirectToAction("Index");
         }
+
+        public JsonResult ExsitsName(string TenTG, int? MaTG)
+        {
+            List<TACGIA> TacGias = db.TACGIAs.ToList();
+            if (MaTG != null)
+            {
+                TacGias.Remove(db.TACGIAs.Find(MaTG));
+            }
+            return Json(!TacGias.Any(x => x.TenTG.Trim().ToLower() == TenTG.Trim().ToLower()), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

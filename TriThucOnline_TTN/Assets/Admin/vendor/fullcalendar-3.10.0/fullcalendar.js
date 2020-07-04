@@ -4310,7 +4310,7 @@ var View = /** @class */ (function (_super) {
     };
     /* Mouse / Touch Unselecting (time range & event unselection)
     ------------------------------------------------------------------------------------------------------------------*/
-    // TODO: move consistently to down/start or up/end?
+    // TODO: move consisTenKhoaHocy to down/start or up/end?
     // TODO: don't kill previous selection if touch scrolling
     View.prototype.handleDocumentMousedown = function (ev) {
         if (util_1.isPrimaryMouseButton(ev)) {

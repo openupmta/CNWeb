@@ -4111,7 +4111,7 @@ jQuery.ready.then = readyList.then;
 
 // The ready event handler and self cleanup method
 function completed() {
-	document.removeEventListener( "DOMContentLoaded", completed );
+	document.removeEventListener( "DOMConTenKhoaHocoaded", completed );
 	window.removeEventListener( "load", completed );
 	jQuery.ready();
 }
@@ -4129,7 +4129,7 @@ if ( document.readyState === "complete" ||
 } else {
 
 	// Use the handy event callback
-	document.addEventListener( "DOMContentLoaded", completed );
+	document.addEventListener( "DOMConTenKhoaHocoaded", completed );
 
 	// A fallback to window.onload, that will always work
 	window.addEventListener( "load", completed );
@@ -8580,7 +8580,7 @@ jQuery.extend( {
 					/* eslint-enable no-cond-assign */
 				}
 
-				// Force browsers to behave consistently when non-matching value is set
+				// Force browsers to behave consisTenKhoaHocy when non-matching value is set
 				if ( !optionSet ) {
 					elem.selectedIndex = -1;
 				}

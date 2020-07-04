@@ -1,0 +1,35 @@
+﻿@model TriThucOnline_TTN.Models.KHOAHOC
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/Register/css/style.css">
+
+<h2>Thêm khoá học</h2>
+<h4 style="color:red">@ViewBag.ThongBao</h4>
+
+<form id='input_form' method='post' class="form-horizontal">
+
+    <fieldset>
+        <div class="form-group">
+            <label for="TenKhoaHoc" class="control-label col-md-3">Tên khoá học:</label>
+            <div class="col-md-6">
+                <input type="text" value="" name="TenKhoaHoc" id="TenKhoaHoc" size="25" class="required form-control" placeholder="Tên khoá học..." autofocus />
+                @Html.ValidationMessageFor(model => model.TenKhoaHoc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-6">
+                <input type="submit" value="Thêm" class="btn btn-success" />
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>

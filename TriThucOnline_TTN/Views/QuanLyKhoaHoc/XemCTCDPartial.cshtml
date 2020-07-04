@@ -1,0 +1,23 @@
+﻿@using TriThucOnline_TTN.Models;
+@model List<KHOAHOC>
+
+<table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Mã khoá học:</th>
+            <th>Tên khoá học:</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaKhoaHoc</td>
+                <td>@item.TenKhoaHoc</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -9,7 +9,7 @@ namespace TriThucOnline_TTN.Controllers
 {
     public class GioHangController : Controller
     {
-        SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        SQL_KhoaHoc db = new SQL_KhoaHoc();
         public List<CartItem> LayGioHang()
         {
             List<CartItem> lstGioHang = Session["ShoppingCart"] as List<CartItem>;

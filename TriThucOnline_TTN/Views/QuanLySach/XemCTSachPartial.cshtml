@@ -23,13 +23,13 @@
                 <td>@item.MaSach</td>
                 <td>@item.TenSach</td>
                 <td>@string.Format("{0:0,0}", item.GiaTien) VNĐ</td>
-                <td>@item.TrichDan</td>
+                <td>@Html.Raw(item.TrichDan)</td>
                 <td>@item.NamXuatBan</td>
                 <td>
                     <img src="@Url.Content("~/Content/HinhAnhSP/"+item.PicBook)" class="img-responsive" style="width: 150px; height: auto"/>
                 </td>
                 <td>@item.SoLuongTon</td>
-                <td>@Html.DisplayFor(modelItem => item.THELOAI.TenTL)</td>
+                <td>@Html.DisplayFor(modelItem => item.KHOAHOC.TenKhoaHoc)</td>
                 <td>@Html.DisplayFor(modelItem => item.NXB.TenNXB)</td>
                 <td>@item.Moi</td>
                 
