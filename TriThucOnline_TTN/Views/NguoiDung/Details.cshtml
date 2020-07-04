@@ -34,38 +34,38 @@
             width:90%;
             margin:0 5%;
         }
-        li.nav-item{
-            width:100%;
+
+        .nav.nav-tabs {
+            flex-direction : column;
         }
-        
-    
+
+        .nav-link.active {
+            background-color: #ebd64f !important;
+            color: #ffffff !important;
+        }
+        a {
+            color: #212529;
+        }
+
+        .nav.nav-tabs .nav-item .nav-link {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .nav-item .nav-link {
+            padding: 10px;
+        }
 </style>
 
 <div class="container">
     <div class="row">
 
-        <div class="col-md-3 user_detail--menu">
+        <div class="col-md-3 user_detail--menu" style="">
             <ul class="nav nav-tabs" style="padding:0px;">
                 <li class="nav-item">
                     <a class="nav-link active" href="#thongtinchung" role="tab" data-toggle="tab" aria-selected="true">Thông tin tài khoản</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#diachi" role="tab" data-toggle="tab" aria-selected="true">Sổ địa chỉ</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#donhang" role="tab" data-toggle="tab" aria-selected="true"  onclick="ShowOrder()">Đơn hàng của tôi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" role="tab" data-toggle="tab" aria-selected="true">Thông Báo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" role="tab" data-toggle="tab" aria-selected="true">Yêu Thích</a>
-                </li>
-                <li class="nav-item" style="padding-top:12px;">
-                    <button class="btn btn-outline-danger logout">
-                        Đăng Xuất
-                    </button>
-
                 </li>
             </ul>
         </div>
@@ -124,7 +124,7 @@
                                 <input class="thongtin-text" type="text" name="re_password_new" value="" placeholder="nhập lại mật khẩu mới" />
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary" type="submit">
+                                <button class="btn btn-success" type="submit">
                                     Lưu Lại
                                 </button>
                             </div>
