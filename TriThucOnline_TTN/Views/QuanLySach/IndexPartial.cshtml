@@ -1,6 +1,6 @@
 ﻿@using PagedList.Mvc;
 @using PagedList;
-@model PagedList.PagedList<TriThucOnline_TTN.Models.DAUSACH>
+@model PagedList.PagedList<TriThucOnline_TTN.Models.ViewModel.DAUSACHViewModel>
 
 <div class="table-responsive">
     <table class="table table-condensed table-bordered table-striped table-hover">
@@ -22,7 +22,7 @@
 
                 </th>
                 <th>
-                    <span class="text-primary">Thể loại</span>
+                    <span class="text-primary">khoá học</span>
 
                 </th>
                 <th>
@@ -51,16 +51,13 @@
                         @Html.DisplayFor(modelItem => item.SoLuongTon)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.THELOAI.TenTL)
+                        @Html.DisplayFor(modelItem => item.TenKhoaHoc)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NXB.TenNXB)
+                        @Html.DisplayFor(modelItem => item.TenNXB)
                     </td>
                     <td>
-                        @*@Html.ActionLink("Chỉnh sửa", "ChinhSua", new { @MaSach = item.MaSach }) |
-                            @Html.ActionLink("Hiển thị", "HienThi", new { @MaSach = item.MaSach }) |
-                            @Html.ActionLink("Xoa", "Xoa", new { @MaSach = item.MaSach })*@
-
+                       
                         <a href="/QuanLySach/ChinhSua?MaSach=@item.MaSach"><i class="far fa-edit"></i></a>
                         @*<a href="/QuanLySach/HienThi?MaSach=@item.MaSach" class="btn btn-primary btn-sm btn-color-primary"><i class="glyphicon glyphicon-eye-open"></i></a>*@
                         <button onclick="ChiTietSach('@item.MaSach')"><i class="fas fa-info-circle"></i></button>

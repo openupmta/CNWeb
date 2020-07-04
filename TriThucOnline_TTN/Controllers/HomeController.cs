@@ -12,21 +12,21 @@ namespace TriThucOnline_TTN.Controllers
 {
     public class HomeController : Controller
     {
-        private SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        private SQL_KhoaHoc db = new SQL_KhoaHoc();
        
         public ActionResult Index(int PageNo = 1)
         {
 
-            // phân loại sách theo thể loại (Home)
-            ViewBag.vanhoc = db.DAUSACHes.Where(temp => temp.MaTL == 1).ToList();
-            ViewBag.thieunhi = db.DAUSACHes.Where(temp => temp.MaTL == 2).ToList();
-            ViewBag.hoiki = db.DAUSACHes.Where(temp => temp.MaTL == 3).ToList();
-            ViewBag.giaokhoa = db.DAUSACHes.Where(temp => temp.MaTL == 4).ToList();
-            ViewBag.ngoaingu = db.DAUSACHes.Where(temp => temp.MaTL == 5).ToList();
-            ViewBag.kinhte = db.DAUSACHes.Where(temp => temp.MaTL == 6).ToList();
-            ViewBag.tamli = db.DAUSACHes.Where(temp => temp.MaTL == 7).ToList();
-            ViewBag.nuoidaycon = db.DAUSACHes.Where(temp => temp.MaTL ==8).ToList();
-            ViewBag.vanphongpham = db.DAUSACHes.Where(temp => temp.MaTL == 9).ToList();
+            // phân loại sách theo khoá học (Home)
+            ViewBag.vanhoc = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 1).ToList();
+            ViewBag.thieunhi = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 2).ToList();
+            ViewBag.hoiki = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 3).ToList();
+            ViewBag.giaokhoa = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 4).ToList();
+            ViewBag.ngoaingu = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 5).ToList();
+            ViewBag.kinhte = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 6).ToList();
+            ViewBag.tamli = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 7).ToList();
+            ViewBag.nuoidaycon = db.DAUSACHes.Where(temp => temp.MaKhoaHoc ==8).ToList();
+            ViewBag.vanphongpham = db.DAUSACHes.Where(temp => temp.MaKhoaHoc == 9).ToList();
 
 
             //Paging

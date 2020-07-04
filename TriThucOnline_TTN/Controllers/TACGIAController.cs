@@ -12,7 +12,7 @@ namespace TriThucOnline_TTN.Controllers
 {
     public class TACGIAController : Controller
     {
-        private SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        private SQL_KhoaHoc db = new SQL_KhoaHoc();
 
         // GET: TACGIA
         public ActionResult Index()

@@ -1,6 +1,6 @@
 ﻿@using TriThucOnline_TTN.Models;
 @{ 
-    SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+    SQL_KhoaHoc db = new SQL_KhoaHoc();
     var sum = (from s in db.DAUSACHes
                select s.MaSach).Count();
     var sumMoi = (from s in db.DAUSACHes

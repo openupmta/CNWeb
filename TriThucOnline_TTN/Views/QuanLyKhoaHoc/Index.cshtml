@@ -1,0 +1,101 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.KHOAHOC>
+
+@{
+    ViewBag.Title = "Quản lý khoá học";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/Register/css/style.css">
+
+<style>
+    .timkiem {
+        position: relative;
+        left: 640px;
+    }
+    .btn-search{
+        position: relative;
+        left: 650px
+    }
+
+</style>
+
+<h2>Quản lý khoá học</h2>
+
+<div>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action("Create")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Thêm khoá học</a>
+</div>
+
+
+<div class="MenuTrang">
+    <div class="table-responsive">
+        @using (Html.BeginForm("Index", "QuanLyKHOAHOC", FormMethod.Get))
+        {
+            <input class="timkiem" type="text" name="search" placeholder="Search..." />
+            <select name="PageSize" aria-controls="example1" class="form-control input-sm" style="float:left; width:6%">
+
+                @for (int i = 0; i <= 25; i += 5)
+                {
+                    var select = "";
+                    if (i == ViewBag.PageSize)
+                    {
+                        select = "selected";
+                    }
+                    <option @select value="@i">@i</option>
+                }
+            </select>
+            <button class="btn-search" type="submit" name="submit">Tìm kiếm</button>
+        }
+        <table class="table table-condensed table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th width="80">
+                        <span class="text-primary">Mã khoá học</span>
+                    </th>
+                    <th>
+                        <span class="text-primary">Tên khoá học</span>
+
+                    </th>
+                    <th><span class="text-primary">Chức năng</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="80">
+                            @Html.DisplayFor(modelItem => item.MaKhoaHoc)
+                        </td>
+                        <td width="200">
+                            @Html.DisplayFor(modelItem => item.TenKhoaHoc)
+                        </td>
+
+                        <td>
+
+                            <a href="@Url.Action("Edit","QuanLyKHOAHOC",new { id = item.MaKhoaHoc })"><i class="far fa-edit"></i></a>
+                            <a href="@Url.Action("Delete","QuanLyKHOAHOC",new { id = item.MaKhoaHoc })" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                <span class="fas fa-trash-alt"></span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                @Html.PagedListPager(Model, PageNum => Url.Action("Index", new { PageNum, search = Request.QueryString["search"], PageSize = Request.QueryString["PageSize"] }))
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+

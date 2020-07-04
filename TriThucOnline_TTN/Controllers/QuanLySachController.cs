@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TriThucOnline_TTN.Models;
 using System.IO;
 using PagedList;
+using TriThucOnline_TTN.Models.ViewModel;
 
 namespace TriThucOnline_TTN.Controllers
 {
@@ -13,34 +14,68 @@ namespace TriThucOnline_TTN.Controllers
     public class QuanLySachController : Controller
     {
         // GET: QuanLyDAUSACH
-        SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        SQL_KhoaHoc db = new SQL_KhoaHoc();
         
-        public ActionResult Index(int? page)
+        public ActionResult Index(int PageNum = 1, int PageSize = 5, string search = null)
         {
-            int pageNumber = (page ?? 1);
-            int pageSize = 10;
-            return View(db.DAUSACHes.ToList().OrderBy(n => n.MaSach).ToPagedList(pageNumber, pageSize));
+            ViewBag.PageSize = PageSize;
+            var lst = db.Database.SqlQuery<DAUSACHViewModel>("select ds.*,tg.TenTG as TenTG, tl.TenKhoaHoc as TenKhoaHoc, nxb.TenNXB as TenNXB" +
+               " from DAUSACH as ds" +
+               " left join TACGIA as tg on ds.MaTG = tg.MaTG " +
+               "left join KHOAHOC as tl on ds.MaKhoaHoc = tl.MaKhoaHoc " +
+               "left join NXB as nxb on ds.MaNXB = nxb.MaNXB order by ds.MaSach desc").ToList();
+
+            if (search != null)
+            {
+                lst = lst.Where(x => x.TenNXB.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.TenSach.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.SoLuongTon.ToString().ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.TenKhoaHoc.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.MaSach.ToString().ToLower().Trim().Contains(search.ToLower().Trim())
+                ).OrderByDescending(x => x.MaSach).ToList();
+            }
+            return View(lst.ToList().ToPagedList<DAUSACHViewModel>(PageNum, PageSize));
         }
-        public ActionResult Search(string search = "")
-        {
-            ViewBag.search = search;
-            return View(db.DAUSACHes.Where(temp => temp.TenSach.Contains(search)).ToList());
-        }
-        public PartialViewResult IndexPartial(int? page)
-        {
-            int pageNumber = (page ?? 1);
-            int pageSize = 10;
-            return PartialView(db.DAUSACHes.ToList().OrderBy(n => n.MaSach).ToPagedList(pageNumber, pageSize));
-        }
+        
         //Thêm mới 
         [HttpGet]
         public ActionResult ThemMoi()
         {
             DAUSACH sach = new DAUSACH();
             //Đưa dữ liệu vào dropdownlist
-            ViewBag.MaTL = new SelectList(db.THELOAIs.ToList().OrderBy(n => n.TenTL), "MaTL", "TenTL");
-            ViewBag.MaNXB = new SelectList(db.NXBs.ToList().OrderBy(n => n.TenNXB), "MaNXB", "TenNXB");
-            ViewBag.MaTG = new SelectList(db.TACGIAs.ToList().OrderBy(n => n.TenTG), "MaTG", "TenTG");
+            List<DropDownList> KHOAHOC = new List<DropDownList>();
+            List<KHOAHOC> DBKHOAHOC = db.KHOAHOCs.ToList();
+            foreach (KHOAHOC tl in DBKHOAHOC)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaKhoaHoc;
+                add.Name = tl.TenKhoaHoc;
+                KHOAHOC.Add(add);
+            }
+            ViewBag.ViewKHOAHOC = KHOAHOC;
+
+            List<DropDownList> NXB = new List<DropDownList>();
+            List<NXB> DBNXB = db.NXBs.ToList();
+            foreach (NXB tl in DBNXB)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaNXB;
+                add.Name = tl.TenNXB;
+                NXB.Add(add);
+            }
+            ViewBag.ViewNXB = NXB;
+
+            List<DropDownList> TacGia = new List<DropDownList>();
+            List<TACGIA> DBTacGia = db.TACGIAs.ToList();
+            foreach (TACGIA tl in DBTacGia)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaTG;
+                add.Name = tl.TenTG;
+                TacGia.Add(add);
+            }
+            ViewBag.ViewTacGia = TacGia;
+
             return View(sach);
         }
         [HttpPost]
@@ -50,9 +85,39 @@ namespace TriThucOnline_TTN.Controllers
 
 
             //Đưa dữ liệu vào dropdownlist
-            ViewBag.MaTL = new SelectList(db.THELOAIs.ToList().OrderBy(n => n.TenTL), "MaTL", "TenTL", sach.MaTL);
-            ViewBag.MaNXB = new SelectList(db.NXBs.ToList().OrderBy(n => n.TenNXB), "MaNXB", "TenNXB", sach.MaNXB);
-            ViewBag.MaTG = new SelectList(db.TACGIAs.ToList().OrderBy(n => n.TenTG), "MaTG", "TenTG", sach.MaTG);
+            List<DropDownList> KHOAHOC = new List<DropDownList>();
+            List<KHOAHOC> DBKHOAHOC = db.KHOAHOCs.ToList();
+            foreach (KHOAHOC tl in DBKHOAHOC)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaKhoaHoc;
+                add.Name = tl.TenKhoaHoc;
+                KHOAHOC.Add(add);
+            }
+            ViewBag.ViewKHOAHOC = KHOAHOC;
+
+            List<DropDownList> NXB = new List<DropDownList>();
+            List<NXB> DBNXB = db.NXBs.ToList();
+            foreach (NXB tl in DBNXB)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaNXB;
+                add.Name = tl.TenNXB;
+                NXB.Add(add);
+            }
+            ViewBag.ViewNXB = NXB;
+
+            List<DropDownList> TacGia = new List<DropDownList>();
+            List<TACGIA> DBTacGia = db.TACGIAs.ToList();
+            foreach (TACGIA tl in DBTacGia)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaTG;
+                add.Name = tl.TenTG;
+                NXB.Add(add);
+            }
+            ViewBag.ViewTacGia = TacGia;
+
             //kiểm tra đường dẫn ảnh bìa
             if (fileUpload == null)
             {
@@ -100,9 +165,39 @@ namespace TriThucOnline_TTN.Controllers
                 return null;
             }
             //Đưa dữ liệu vào dropdownlist
-            ViewBag.MaTL = new SelectList(db.THELOAIs.ToList().OrderBy(n => n.TenTL), "MaTL", "TenTL", sach.MaTL);
-            ViewBag.MaNXB = new SelectList(db.NXBs.ToList().OrderBy(n => n.TenNXB), "MaNXB", "TenNXB", sach.MaNXB);
-            ViewBag.MaTG = new SelectList(db.TACGIAs.ToList().OrderBy(n => n.TenTG), "MaTG", "TenTG", sach.MaTG);
+            List<DropDownList> KHOAHOC = new List<DropDownList>();
+            List<KHOAHOC> DBKHOAHOC = db.KHOAHOCs.ToList();
+            foreach(KHOAHOC tl in DBKHOAHOC)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaKhoaHoc;
+                add.Name = tl.TenKhoaHoc;
+                KHOAHOC.Add(add);
+            }
+            ViewBag.ViewKHOAHOC = KHOAHOC;
+
+            List<DropDownList> NXB = new List<DropDownList>();
+            List<NXB> DBNXB= db.NXBs.ToList();
+            foreach (NXB tl in DBNXB)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaNXB;
+                add.Name = tl.TenNXB;
+                NXB.Add(add);
+            }
+            ViewBag.ViewNXB = NXB;
+
+            List<DropDownList> TacGia = new List<DropDownList>();
+            List<TACGIA> DBTacGia = db.TACGIAs.ToList();
+            foreach (TACGIA tl in DBTacGia)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaTG;
+                add.Name = tl.TenTG;
+                TacGia.Add(add);
+            }
+            ViewBag.ViewTacGia = TacGia;
+
             ViewBag.Moi = sach.Moi;
             return View(sach);
         }
@@ -131,9 +226,38 @@ namespace TriThucOnline_TTN.Controllers
                 return RedirectToAction("Index");
             }
             //Đưa dữ liệu vào dropdownlist
-            ViewBag.MaTL = new SelectList(db.THELOAIs.ToList().OrderBy(n => n.TenTL), "MaTL", "TenTL", sach.MaTL);
-            ViewBag.MaNXB = new SelectList(db.NXBs.ToList().OrderBy(n => n.TenNXB), "MaNXB", "TenNXB", sach.MaNXB);
-            ViewBag.MaTG = new SelectList(db.TACGIAs.ToList().OrderBy(n => n.TenTG), "MaTG", "TenTG", sach.MaTG);
+            List<DropDownList> KHOAHOC = new List<DropDownList>();
+            List<KHOAHOC> DBKHOAHOC = db.KHOAHOCs.ToList();
+            foreach (KHOAHOC tl in DBKHOAHOC)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaKhoaHoc;
+                add.Name = tl.TenKhoaHoc;
+                KHOAHOC.Add(add);
+            }
+            ViewBag.ViewKHOAHOC = KHOAHOC;
+
+            List<DropDownList> NXB = new List<DropDownList>();
+            List<NXB> DBNXB = db.NXBs.ToList();
+            foreach (NXB tl in DBNXB)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaNXB;
+                add.Name = tl.TenNXB;
+                NXB.Add(add);
+            }
+            ViewBag.ViewNXB = NXB;
+
+            List<DropDownList> TacGia = new List<DropDownList>();
+            List<TACGIA> DBTacGia = db.TACGIAs.ToList();
+            foreach (TACGIA tl in DBTacGia)
+            {
+                DropDownList add = new DropDownList();
+                add.ID = tl.MaTG;
+                add.Name = tl.TenTG;
+                TacGia.Add(add);
+            }
+            ViewBag.ViewTacGia = TacGia;
             return View(sach);
         }
         //Hiển thị sản phẩm
@@ -165,8 +289,7 @@ namespace TriThucOnline_TTN.Controllers
             return PartialView(lstDAUSACH);
         }
 
-        [HttpPost]
-        public JsonResult Remove(int id)
+        public ActionResult Delete(int id)
         {
             DAUSACH sach = db.DAUSACHes.SingleOrDefault(n => n.MaSach == id);
             if (sach == null)
@@ -181,7 +304,7 @@ namespace TriThucOnline_TTN.Controllers
             }
             db.DAUSACHes.Remove(sach);
             db.SaveChanges();
-            return Json(new { Url = Url.Action("IndexPartial") });
+            return RedirectToAction("Index");
         }
     }
 }

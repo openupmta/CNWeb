@@ -10,21 +10,87 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="~/Content/bootstrap.min.css">
 <link rel="stylesheet" href="~/Content/Register/css/style.css">
+<style>
+    .timkiem {
+        position: relative;
+        left: 640px;
+    }
 
+    .btn-search {
+        position: relative;
+        left: 650px
+    }
+</style>
 <h2>Quản lý nhà xuất bản</h2>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
     <a href="@Url.Action("Create")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Thêm nhà xuất bản</a>
 </p>
-<div id="Xoa_NXB">
-    @{ Html.RenderPartial("IndexPartial");}
-</div>
-@* Tạo link liên kết các trang*@
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
-    <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+<div class="MenuTrang">
+    <div class="table-responsive">
+        @using (Html.BeginForm("Index", "QuanLyKHOAHOC", FormMethod.Get))
+        {
+            <input class="timkiem" type="text" name="search" placeholder="Search..." />
+            <select name="PageSize" aria-controls="example1" class="form-control input-sm" style="float:left; width:6%">
+
+                @for (int i = 0; i <= 25; i += 5)
+                {
+                    var select = "";
+                    if (i == ViewBag.PageSize)
+                    {
+                        select = "selected";
+                    }
+                    <option @select value="@i">@i</option>
+                }
+            </select>
+            <button class="btn-search" type="submit" name="submit">Tìm kiếm</button>
+        }
+        <table class="table table-condensed table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="text-primary">Mã</span>
+
+                    </th>
+                    <th>
+                        <span class="text-primary">Tên nhà xuất bản</span>
+                    </th>
+                    <th>
+                        <span class="text-primary">Chức năng</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaNXB)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenNXB)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit","QuanLyNXB",new { id = item.MaNXB })"><i class="far fa-edit"></i></a>
+                            <a href="@Url.Action("Delete","QuanLyNXB",new { id = item.MaNXB })" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                <span class="fas fa-trash-alt"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+        <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                @Html.PagedListPager(Model, PageNum => Url.Action("Index", new { PageNum, search = Request.QueryString["search"], PageSize = Request.QueryString["PageSize"] }))
+            </div>
+        </div>
     </div>
+    
+</div>
     <style>
         .MenuTrang li {
             display: inline;
@@ -45,7 +111,7 @@
                 url: '/QuanLyNXB/Remove',
                 data: { id: Id },
                 success: function (data) {
-                    $.post(data.Url+"/?page="+pageNumber, function (partial) {
+                    $.post(data.Url + "/?page=" + pageNumber, function (partial) {
                         $("#Xoa_NXB").html(partial);
                     });
                 }

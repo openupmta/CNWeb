@@ -12,7 +12,7 @@ namespace TriThucOnline_TTN.Controllers
 {
     public class DAUSACHController : Controller
     {
-        private SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        private SQL_KhoaHoc db = new SQL_KhoaHoc();
         
         // GET: DAUSACH/Details/5
         public ActionResult Details(int? id)
@@ -34,12 +34,12 @@ namespace TriThucOnline_TTN.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            THELOAI tl = db.THELOAIs.Find(id);
+            KHOAHOC tl = db.KHOAHOCs.Find(id);
             if (tl == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.sachtheotheloai = tl.DAUSACHes.ToList();
+            ViewBag.sachtheoKHOAHOC = tl.DAUSACHes.ToList();
             return PartialView("_PartitalView_SachLienQuan");
         }
         [HttpPost]
