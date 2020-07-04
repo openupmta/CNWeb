@@ -1,0 +1,165 @@
+﻿@using TriThucOnline_TTN.Models;
+
+@model List<CartItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    input#quantity {
+        position: relative;
+        width: 25px;
+        text-align: center;
+        border: none;
+    }
+
+    .soluong_giohang {
+        border: 1.5px solid #e4e4e4;
+    }
+
+    .glyphicon, #quantity {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .giohang--giatien_right {
+        float: right;
+        display: inline-block;
+    }
+
+    .cart_products-delete {
+        line-height: 70px;
+        zoom: 1.3;
+        text-align: center;
+    }
+
+    .khuyenmai {
+        padding: 20px;
+    }
+
+        .khuyenmai h5 {
+            color: blue
+        }
+
+        .khuyenmai .progress {
+            font-size: 18px;
+            height: 25px;
+        }
+
+        .khuyenmai input {
+            padding: 4px;
+        }
+
+    .total-cart {
+        padding: 15px;
+        margin-top: 25px;
+        background-color: white;
+    }
+
+        .total-cart .thanhtoan {
+            margin-top: 25px;
+            width: 100%
+        }
+
+        .total-cart div p {
+            display: inline-block;
+        }
+
+    .table-borderless img {
+        width: 125px;
+    }
+
+    .table-borderless tr {
+        border-bottom: 2px solid #e4e4e4;
+    }
+
+    .thanhtoan a {
+        font-size: 18px;
+    }
+
+        .thanhtoan a:hover {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+</style>
+
+<body style="background-color: #F0F0F0;">
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+            <h3>GIỎ HÀNG</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+
+                <table class="table table-borderless" style="background-color: white;" id="listItemCart">
+                    @{ Html.RenderPartial("Success");}
+                </table>
+            </div>
+            <div class="col-md-4">
+                <div class="total-cart">
+                    <div>
+                        <p>Thành tiền</p>
+                        <p class="giohang--giatien_right" id="totalprice">
+                            @{double tongTien = 0;
+                                foreach (var item in Model)
+                                {
+                                    tongTien += (double)item.productOrder.GiaTien * item.Quality;
+                                }}
+                            @string.Format("{0:0,0}", tongTien)     đ
+                        </p>
+                    </div>
+                    <div>
+                        <p>VAT </p>
+                        <p class="giohang--giatien_right" id="value_discount">0 đ</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <b>Tổng số tiền (đã gồm VAT)</b>
+                        <b class="giohang--giatien_right" id="totalpayment">@string.Format("{0:0,0}", tongTien) đ</b>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-primary thanhtoan" onclick="location.href='@Url.Action("Confirm","GioHang")'">
+                            <a href="@Url.Action("Confirm","GioHang")"> Thanh toán </a>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+function CapNhatSoLuong(MaSach, operator) {
+    if (operator == "+") {
+        document.getElementById("SoLuong[" + MaSach + "]").value++;
+    }
+    else {
+        document.getElementById("SoLuong[" + MaSach + "]").value--;
+    }
+    CapNhat(MaSach);
+    }
+</script>
+@*<script>
+        window.onload = function () {
+            pageScroll();
+        };
+        function pageScroll() {
+            window.scrollBy(0, 30); // horizontal and vertical scroll increments
+            //scrolldelay = setTimeout('pageScroll()', 10); // scrolls every 100 milliseconds
+            scrolldelay = setTimeout(function () {
+                pageScroll();
+                var scrollPosition = $(window).scrollTop();
+                if (scrollPosition > 680)
+                    stopTimeOut();
+            }, 10);
+        }
+        function stopTimeOut() {
+            // debugger;
+            clearTimeout(scrolldelay);
+        }
+    </script>*@

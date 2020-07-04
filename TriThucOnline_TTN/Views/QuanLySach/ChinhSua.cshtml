@@ -1,0 +1,147 @@
+﻿@model TriThucOnline_TTN.Models.DAUSACH
+@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+<h2>Chỉnh sửa sách</h2>
+@using (Html.BeginForm("ChinhSua", "QuanLySach", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.EditorFor(model => model.MaSach, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @hidden = "hidden" } })
+    <br />
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Tên sách(*)</strong></span>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Giá tiền(*)</strong></span>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.GiaTien, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GiaTien, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Năm xuất bản(*)</strong></span>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.NamXuatBan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NamXuatBan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Ảnh bìa(*)</strong></span>
+        <div class=" col-md-6">
+            @* lay ten anh trong database cho feild AnhBia (tránh trường hợp không thêm ảnh mới) *@
+            <input id="PicBook" name="PicBook" type="text" value="@Model.PicBook" hidden>
+            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px">
+                <img id="output" src="@Url.Content("~/Content/HinhAnhSP/" + Model.PicBook)" style="width: 200px; height: 150px">
+            </div>
+            <input type="file" class="form-control-file" name="fileUpload" value="@Model.PicBook" onchange="loadFile(event)" accept="image/*" />
+
+            <script>
+                var loadFile = function (event) {
+                    var image = document.getElementById('output');
+                    image.src = URL.createObjectURL(event.target.files[0]);
+                };
+            </script>
+            <p class="text-danger"><br />@ViewBag.ThongBao</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Số lượng tồn(*)</strong></span>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Thể loại(*)</strong></span>
+        <div class="col-md-6">
+            @Html.DropDownListFor(Model => Model.MaTL, (SelectList)ViewBag.MaTL, "-- Chọn thể loại --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(Model => Model.MaTL, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Nhà xuất bản(*)</strong></span>
+        <div class="col-md-6">
+            @Html.DropDownListFor(model => model.MaNXB, (SelectList)ViewBag.MaNXB, "-- Chọn NXB --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(Model => Model.MaNXB, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Tác giả(*)</strong></span>
+        <div class="col-md-6">
+            @Html.DropDownListFor(Model => Model.MaTG, (SelectList)ViewBag.MaTG, new { @class = "form-control" })
+            @Html.ValidationMessageFor(Model => Model.MaTG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Mới(*)</strong></span>
+        <div class="col-md-6">
+            @{if (ViewBag.Moi == 1)
+                {
+                    <input type="radio" name="Moi" id="Moi" value="1" checked /><span>Mới</span><br />
+                    <input type="radio" name="Moi" id="Moi" value="0" /><span>Không</span>
+                }
+                else
+                {
+                    <input type="radio" name="Moi" id="Moi" value="1" /><span>Mới</span><br />
+                    <input type="radio" name="Moi" id="Moi" value="0" checked /><span>Không</span>
+                }
+            }
+            @*@Html.EditorFor(model => model.Moi)
+                @Html.ValidationMessageFor(model => model.Moi)*@
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Trích dẫn</strong></span>
+        <div class="col-md-6">
+            <textarea name="TrichDan" class="form-control">@Model.TrichDan</textarea>
+            @*@Html.Raw(Model.MoTa)*@
+            @*@Html.TextAreaFor(model => model.MoTa)*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="control-label col-md-3"><strong>Số trang</strong></span>
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.SoTrang, new { htmlAttributes = new { @class = "required form-control" } })
+            @Html.ValidationMessageFor(model => model.SoTrang)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-6">
+            <input type="submit" value="Lưu" class="btn btn-warning" />
+        </div>
+    </div>
+
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+
+

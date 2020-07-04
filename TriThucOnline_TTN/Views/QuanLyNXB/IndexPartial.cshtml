@@ -1,0 +1,49 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.NXB>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="text-primary">Mã</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Tên nhà xuất bản</span>
+                </th>
+                <th>
+                    <span class="text-primary">Chức năng</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaNXB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenNXB)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { @MaNXB = item.MaNXB })">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    
+                        <button onclick="ChiTietNXB('@item.MaNXB')">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                        <button onclick="delete_article('@item.MaNXB', @Model.PageNumber)" style="color:red">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+           
+        </tbody>
+    </table>
+</div>

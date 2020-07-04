@@ -1,0 +1,89 @@
+﻿@model TriThucOnline_TTN.Models.KHACHHANG
+
+@{
+
+    ViewBag.Title = "Login";
+    Layout = "";
+}
+
+<!-- CSS -->
+@*<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>*@
+<link href="~/Content/Register/css/OleoScript.css" rel="stylesheet" />
+<link href="~/Content/Register/css/PTSans.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/Register/css/style.css">
+@*font awesome*@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+<style>
+    /*các thông báo lỗi sẽ được chứa trong các label với class là error*/
+    label.error {
+        color: red;
+    }
+    .iphone img {
+        width:50%;
+    }
+    .register-container{
+        margin-top:100px;
+    }
+    .register{
+        width:40%;
+        margin:auto;
+    }
+    .logo.span4 h1 a {
+        margin-left: 356px;
+    }
+</style>
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="logo span4">
+                <h1><a href="">T&T IELTS Login <span class="red">.</span></a></h1>
+            </div>
+            <div class="links span8">
+                <a class="home" href="" rel="tooltip" data-placement="bottom" data-original-title="Home"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="register-container container">
+    <div class="row">
+
+        <div class="register span6">
+            <form action="" id='input_form' method="post">
+                <fieldset>
+                    <h2>    LOGIN TO <span class="red"><strong>T&T IELTS</strong></span></h2>
+                    @if (ViewBag.ThongBao != null)
+                    {
+                        <div class="alert alert-info">
+                            @ViewBag.ThongBao
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i></label>
+                        <label for="DienThoai" class="control-label">Tên tài khoản</label>
+                        <input type="text" value="" name="username" id="DienThoai" size="25" class="required form-control" autofocus placeholder="Tài khoản..." />
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i></label>
+                        <label for="MatKhau" class="control-label">Mật Khẩu</label>
+                        <input type="password" value="" name="password" id="MatKhau" size="25" class="required form-control" placeholder="Mật khẩu..." />
+                    </div>
+                    <input style="display:none" name="urlString" value="@Request.UrlReferrer" />
+                    <div class="form-group" style="text-align:center; margin-bottom:0">
+                        <div class="col-md-offset-2">
+                            <button class="btn btn-success" type="submit"><i class="fas fa-user-check"></i> Đăng Nhập</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- Javascript -->
+<script src="~/Content/Register/js/jquery-1.8.2.min.js"></script>
+<script src="~/Content/AdminLayout/js/jquery.validate.min.js"></script>
+<script src="~/Content/Register/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Content/Register/js/jquery.backstretch.min.js"></script>
+<script src="~/Content/Register/js/scripts.js"></script>

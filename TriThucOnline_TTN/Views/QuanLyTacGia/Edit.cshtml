@@ -1,0 +1,98 @@
+﻿@model TriThucOnline_TTN.Models.TACGIA
+
+@{
+    ViewBag.Title = "Quản lý tác giả";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/Register/css/style.css">
+
+<h2>Chỉnh sửa tác giả</h2>
+
+@using (Html.BeginForm("Edit", "QuanLyTacGia", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaTG)
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Tên tác giả</label>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.TenTG, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenTG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Ảnh tác giả</label>
+            <div class="col-md-6">
+                @* lay ten anh trong database cho feild AnhBia (tránh trường hợp không thêm ảnh mới) *@
+                <input id="PicTG" name="PicTG" type="text" value="@Model.PicTG" hidden>
+                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px">
+                    <img id="output" src="@Url.Content("~/Content/HinhAnhTG/" + Model.PicTG)" style="width: 200px; height: 150px">
+                </div>
+                <input type="file" class="form-control-file" name="fileUpload" value="@Model.PicTG" onchange="loadFile(event)" accept="image/*" />
+
+                <script>
+                    var loadFile = function (event) {
+                        var image = document.getElementById('output');
+                        image.src = URL.createObjectURL(event.target.files[0]);
+                    };
+                </script>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Thông tin giới thiệu</label>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.ThongTinGioiThieu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ThongTinGioiThieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-6">
+                <input type="submit" value="Lưu" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+}
+@*<form id='input_form' method='post' class="form-horizontal">
+
+        <fieldset>
+            <div class="form-group">
+                <label for="TenNXB" class="control-label col-md-3">Tên nhà xuất bản :</label>
+                <div class="col-md-6">
+                    <input type="text" value="" name="TenNXB" id="TenNXB" size="25" class="required form-control" placeholder="Tên nhà xuât bản..." />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="PicTG" class="control-label col-md-3">Địa chỉ :</label>
+                <div class=" col-md-6">
+                    <input type="text" value="" name="PicTG" id="PicTG" size="25" class="required form-control" placeholder="Địa chỉ..." />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="ThongTinGioiThieu" class="control-label col-md-3">Điện thoại :</label>
+                <div class="col-md-6">
+                    <input type="text" value="" name="ThongTinGioiThieu" id="ThongTinGioiThieu" size="25" class="required form-control" placeholder="Điện thoại..." />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-6">
+                    <input type="submit" value="Lưu" class="btn btn-warning" />
+                </div>
+            </div>
+
+        </fieldset>
+    </form>*@
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>

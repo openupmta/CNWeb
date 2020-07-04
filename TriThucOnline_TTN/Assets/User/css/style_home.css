@@ -1,0 +1,78 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #F4F4F4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.slider {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+    .slick-slide img {
+        width: 100%;
+    }
+
+.slick-prev:before,
+.slick-next:before {
+    color: #f11499;
+    zoom: 1.5;
+}
+
+
+.slick-slide {
+    transition: all ease-in-out .3s;
+    opacity: .2;
+}
+
+.slick-active {
+    opacity: 1;
+}
+
+.slick-current {
+    opacity: 1;
+}
+
+.vertical-menu {
+    width: 100%;
+}
+
+    .vertical-menu h4 {
+        font-size: 18px;
+        background-color: #00ff6f;
+        padding: 14px;
+        margin: 0;
+        text-align: center;
+        font-weight: 600;
+        color: white;
+    }
+
+    .vertical-menu a {
+        background-color: #fff;
+        color: black;
+        display: block;
+        padding: 11px;
+        text-decoration: none;
+        font-family: 'Baloo Chettan 2', cursive;
+        font-size: 17px;
+    }
+
+        .vertical-menu a:hover {
+            background-color: #f11499;
+            color: white;
+        }
+
+        .vertical-menu a i {
+            padding-right: 10px;
+            vertical-align: middle;
+        }
+
+

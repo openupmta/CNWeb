@@ -1,0 +1,65 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.KHACHHANG>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="text-primary">Mã</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Tên khách hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">Ảnh khách hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">SĐT khách hàng</span>
+                </th>
+
+                <th>
+                    <span class="text-primary">Chức năng</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKH)
+                </td>
+                <td>
+                    <img src="@Url.Content("~/Content/HinhAnhKH/"+item.PicUser)" class="img-responsive" style="width: 150px; height: auto" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @*<a href="@Url.Action("Edit", new { @MaKH = item.MaKH })">
+            <i class="far fa-edit"></i>
+        </a>*@
+
+                    <a onclick="ChiTietKH('@item.MaKH')">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                    <button onclick="delete_article('@item.MaKH')" style="color:red">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                    <button onclick="ChiTietDHKH('@item.MaKH')" style="color:darkgreen">
+                        <i class="fas fa-cart-arrow-down"></i>
+                    </button>
+                </td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,373 @@
+
+/*---------------------------------------Responsive---------------------------------------*/
+@media only screen and (min-width: 1201px) {}
+@media only screen and (max-width: 1200px) {
+
+	.nav-horizontal-search form{
+		margin-bottom: 0;
+	}
+	.nav-horizontal-search form input{
+		width: 110px;
+	}
+	.nav-horizontal-search-active{
+		width: 200px;
+	}
+	.nav-horizontal-search form button{
+		width: 35px;
+		right: 10px;
+		top: -1.5px
+	}
+	.nav-horizontal-search form button i{
+		font-size: 13px;
+    }
+
+    .process {
+        width: 130px;
+        height: 130px;
+    }
+    .prc-1 {
+        left: 70px;
+    }
+    .prc-2 {
+        top: 50px;
+        left: 320px;
+    }
+    .prc-3 {
+        top: 90px;
+        left: 545px;
+    }
+    .prc-4 {
+        top: 55px;
+        left: 750px;
+    }
+
+
+}
+@media only screen and (max-width: 992px) {
+	.container {
+	    max-width: 932px;
+    }
+    .course-box {
+        height: 280px;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+@media only screen and (max-width: 930px) {
+    .prc-1 {
+        left: 70px;
+    }
+    .prc-2 {
+        top: 50px;
+        left: 280px;
+    }
+    .prc-3 {
+        top: 90px;
+        left: 480px;
+    }
+    .prc-4 {
+        top: 55px;
+        left: 685px;
+    }
+}
+@media only screen and (max-width: 888px) {
+    .nav-horizontal-content ul.nav-ul-lv-1{
+		display: none;
+	}
+	.menu-mobile-button{
+		display: block;
+    }
+    .prc-1 {
+        left: 50px;
+    }
+    .prc-2 {
+        top: 50px;
+        left: 230px;
+    }
+    .prc-3 {
+        top: 77px;
+        left: 440px;
+    }
+    .prc-4 {
+        top: 55px;
+        left: 630px;
+    }
+    #wowslider-container1{
+            top : 0 !important;
+    }
+    .section-banner{
+        top: 0;
+    }
+}
+@media only screen and (max-width: 830px) {
+
+	.nav-horizontal-container{
+		padding-bottom: 10px;
+		padding-top: 10px;
+	}
+	.nav-horizontal-content{
+		/* top: 25px; */
+	}
+	.nav-horizontal-content-active,.nav-horizontal-content-active-1{
+		top: 0;
+	}
+	.nav-horizontal-container-active,.nav-horizontal-container-active-1{
+		padding-top: 5px;
+		padding-bottom: 5px;
+    }
+    .prc-1 {
+        left: 20px;
+    }
+    .prc-2 {
+        top: 50px;
+        left: 200px;
+    }
+    .prc-3 {
+        top: 77px;
+        left: 410px;
+    }
+    .prc-4 {
+        top: 55px;
+        left: 600px;
+    }
+}
+
+
+
+@media only screen and (max-width: 780px) {
+    .prc-1 {
+        left: 0px;
+    }
+    .prc-2 {
+        top: 50px;
+        left: 170px;
+    }
+    .prc-3 {
+        top: 77px;
+        left: 380px;
+    }
+    .prc-4 {
+        top: 55px;
+        left: 570px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .section-1{
+        display: none;
+    }
+    .course-box {
+        height: 250px;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .library-left {
+        border-right: none !important;
+    }
+    .blog-content span{
+        margin-bottom: 25px;
+    }
+    .book-library {
+        display: flex;
+        flex-wrap: wrap;
+        /* padding: 50px; */
+    }
+    .img-book {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+    .content-book {
+        width: 100%;
+        background: #fff;
+        position: relative;
+    }
+    .content-content-book{
+        max-width: 100%;
+    }
+    .img-book img {
+        box-shadow: none;
+    }
+    .library-right {
+        margin-top: 80px;
+    }
+    .library-left .section-title {
+        padding-bottom: 50px;
+    }
+    .blog-content {
+        align-items: center;
+    }
+    .nav.nav-horizontal-active-2 {
+        top: 17px;
+    }
+}
+@media only screen and (max-width: 687px) {
+    .course-box {
+        height: 210px;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .course-title {
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 680px) {
+
+}
+
+@media only screen and (max-width: 580px) {
+    .text-1 {
+        margin-top : 50px !important;
+        /* font-size: 15px ; */
+        text-align: center;
+    }
+    .text-2{
+        margin-bottom: 80px !important;
+        font-size: 15px ;
+        text-align: center;
+    }
+    .owl-theme .owl-dots{
+        left: 40%;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .course-box {
+        height: 350px;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .skill {
+        right: -200px;
+        width: 250px;
+        z-index: 99;
+    }
+    .blog-content span{
+        margin-bottom: 75px;
+    }
+    .library {
+        justify-content: center;
+    }
+    .logo-footer {
+        display: flex;
+        justify-content: center;
+    }
+    /* .text {
+        font-size: 16px;
+    }
+    .text span {
+        font-size: 16px;
+    } */
+    .owl-carousel .owl-nav .owl-prev {
+        width: 30px;
+        height: 30px;
+    }
+    .owl-carousel .owl-nav .owl-next {
+        width: 30px;
+        height: 30px;
+    }
+    .owl-prev span {
+        font-size: 14px;
+    }
+    .owl-next span {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 475px) {
+    .course-box {
+        height: 300px;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .blog-content {
+        flex-direction: column;
+    }
+    .box-contact {
+        min-height: 800px
+    }
+}
+@media only screen and (max-width: 440px) {
+    .skill {
+        right: -155px;
+        width: 100px;
+        z-index: 99;
+    }
+    .tree {
+        width: 300px;
+    }
+    .library {
+        justify-content: center;
+    }
+    .library-left {
+        margin-top: 20px;
+    }
+    .skill {
+        right: -170px;
+    }
+    .tree {
+        left: 40px;
+        width: 320px;
+        height: 340px;
+    }
+    .skill a {
+        right: -100px;
+    }
+    .form-dk form button {
+        margin-left: -10px;
+    }
+    .menu-right {
+        right: 15px;
+    }
+    .library-img {
+        height: 215px;
+    }
+    .blog-title {
+        flex-direction: column;
+    }
+
+}
+@media only screen and (max-width : 400px){
+    .course-box {
+        height: 280px;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+}
+@media only screen and (max-width : 370px){
+    .course-box {
+        height: 240px;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .skill a {
+        right: -55px;
+    }
+    .form-dk form button {
+        margin-left: -15px;
+    }
+    .library-box {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 30px;
+    }
+    .skill-4 {
+        bottom: 210px;
+    }
+    .skill-3 {
+        bottom: 110px;
+    }
+    .skill-2 {
+        bottom: 50px;
+    }
+    .skill a {
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 332px) {
+	.nav-horizontal-search form input{
+		width: 90px;
+	}
+	.nav-horizontal-search-active{
+		width: 176px;
+	}
+}

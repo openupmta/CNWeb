@@ -1,0 +1,359 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.DAUSACH>
+
+
+@{
+    ViewBag.Title = "Trang Chủ";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="Scripts/slick/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="Scripts/slick/slick/slick-theme.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2:400,700&display=swap&subset=vietnamese" rel="stylesheet">
+
+    @Styles.Render("/Assets/User/css/style_home.css")
+
+    <style>
+
+        .pic_book {
+            height: 66%;
+        }
+
+        .title_book {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 15%;
+        }
+
+        .price_book {
+            font-weight: 700;
+            font-size: 20px;
+            color: red;
+        }
+
+        .vertical-menu h4 {
+            background-color: #53a75f;
+        }
+
+        .slick-prev {
+            position: absolute;
+            left: 20px;
+            z-index: 10;
+        }
+
+        .slick-next {
+            position: absolute;
+            right: 38px;
+            z-index: 10;
+        }
+
+            .slick-prev:before, .slick-next:before {
+                color: #53a75f;
+                zoom: 2.0;
+            }
+
+        .vertical-menu a:hover {
+            background-color: #53a75f;
+            color: white;
+        }
+
+        .banner-center__item {
+            max-height: 100px;
+        }
+
+            .banner-center__item img {
+                width: 80px;
+                height: 80px;
+            }
+        /*.banner-center__item1 img {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            top: -24px;
+        }*/
+
+        .banner-center {
+            padding-top: 0;
+            background-color: #ecd540;
+            max-height: 100px;
+        }
+
+        .banner-center__item2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3" style="padding-right:0;">
+                <div class="vertical-menu">
+                    <h4>Danh Mục Sản Phẩm</h4>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 1 })"><i class="fas fa-book-reader"></i>Khóa học tiếng anh cơ bản</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 2 })"><i class="fas fa-child"></i>Khóa học tiếng anh nâng cao</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 3 })"><i class="fas fa-history"></i>khóa học cho người mất gốc</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 4 })"><i class="fas fa-book"></i>khóa học cho người đi làm</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 5 })"><i class="fas fa-language"></i>khóa học giao tiếp cơ bản</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 6 })"><i class="fas fa-chart-line"></i>khóa học giao tiếp nâng cao</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 7 })"><i class="far fa-grin"></i>khóa học ngữ pháp</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 8 })"><i class="fas fa-baby"></i>Khóa học IELTS</a>
+                    <a href="@Url.Action("Details", "THELOAI", new { @id = 9 })"><i class="fas fa-pencil-ruler"></i>Khóa Học TOEIC</a>
+                </div>
+            </div>
+            <div class="col-lg-9" style="padding-left:0;">
+                <section class="regular slider" style="margin-top:0;">
+                    <div>
+                        <img src="https://i.ytimg.com/vi/OjDB1X6RYgI/maxresdefault.jpg">
+                    </div>
+                    <div>
+                        <img src="https://langmaster.edu.vn/public/files/post-upload/images/ung-dung-doc-bao-tieng-anh-tren-iphone-android.png">
+                    </div>
+                    <div>
+                        <img src="https://www.webico.vn/wp-content/uploads/2017/10/maxresdefault.jpg">
+                    </div>
+                    <div>
+                        <img src="https://leanhtien.net/wp-content/uploads/2017/05/mat-goc-tieng-anh.jpg">
+                    </div>
+                    <div>
+                        <img src="https://www.webico.vn/wp-content/uploads/2017/10/maxresdefault.jpg">
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+    @*===================================== BANNER - CENTER- ADVERTISMENT =======================*@
+
+    <div class="container-fluid banner-center">
+        <div class="row">
+            <div class="col-md-2 banner-center__item">
+            </div>
+            <div class="col-md-2 banner-center__item banner-center__item2">
+                @*<i class="fas fa-star-of-david"></i>*@
+                <img src="~/Assets/User/image/nghe.png" />
+                <p>kỹ năng nghe</p>
+            </div>
+            <div class="col-md-2 banner-center__item banner-center__item2">
+                @*<i class="fas fa-fighter-jet"></i>*@
+                <img src="~/Assets/User/image/noi.png" />
+                <p>kỹ năng nói</p>
+            </div>
+            <div class="col-md-2 banner-center__item banner-center__item2">
+                @*<i class="fas fa-hand-holding-usd"></i>*@
+                <img src="~/Assets/User/image/icons8-read-100.png" />
+                <p>kỹ năng đọc</p>
+            </div>
+            <div class="col-md-2 banner-center__item banner-center__item2" style="padding-right: 33px;">
+                @*<i class="fas fa-hand-holding-usd"></i>*@
+                <img src="~/Assets/User/image/icons8-ball-point-pen-100.png" />
+                <p>kỹ năng viết</p>
+            </div>
+            <div class="col-md-2 banner-center__item">
+            </div>
+        </div>
+    </div>
+
+    @*================================ TAB-MENU  BOOK -=========================================*@
+
+
+
+    <div class="container">
+        <h3>Khóa học cơ bản</h3>
+        <br>
+        <!-- Nav tabs -->
+        <!-- Tab Buttons -->
+        @*<ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#_vanhoc" role="tab" data-toggle="tab" aria-selected="true">tiếng anh cơ bản |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_thieunhi" role="tab" data-toggle="tab" aria-selected="false">tiếng anh nâng cao |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_hoiki" role="tab" data-toggle="tab" aria-selected="false">tiếng anh cho người mất gốc |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_giaokhoa" role="tab" data-toggle="tab" aria-selected="false">tiếng anh cho người đi làm |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_ngoaingu" role="tab" data-toggle="tab" aria-selected="false">Giao tiếp cơ bản |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_kinhte" role="tab" data-toggle="tab" aria-selected="false">Giao tiếp nâng cao |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_tamli" role="tab" data-toggle="tab" aria-selected="false">khóa học TOEIC |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_nuoidaycon" role="tab" data-toggle="tab" aria-selected="false">khóa học IELTS |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_vanphongpham" role="tab" data-toggle="tab" aria-selected="false">Ngữ Pháp |</a>
+                </li>
+            </ul>*@
+
+        <!-- Tab Content Containers -->
+        <div class="tab-content">
+            <div class="container tab-pane fade show active" id="_vanhoc" role="tabpanel">
+               
+                <!-- Call partial view to load initial page load data -->
+                @{ Html.RenderPartial("_vanhoc"); }
+            </div>
+            @*<div class="container tab-pane fade" id="_thieunhi" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_thieunhi"); }
+                </div>
+                <div class="container tab-pane fade" id="_hoiki" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_hoiki"); }
+                </div>
+                <div class="container tab-pane fade" id="_giaokhoa" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_giaokhoa"); }
+                </div>
+                <div class="container tab-pane fade" id="_ngoaingu" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_ngoaingu"); }
+                </div>
+                <div class="container tab-pane fade" id="_kinhte" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_kinhte"); }
+                </div>
+                <div class="container tab-pane fade" id="_tamli" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_tamli"); }
+                </div>
+                <div class="container tab-pane fade" id="_nuoidaycon" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_nuoidaycon"); }
+                </div>
+                <div class="container tab-pane fade" id="_vanphongpham" role="tabpanel">
+                    <br />
+                    @{ Html.RenderPartial("_vanphongpham"); }
+                </div>*@
+        </div>
+
+        <hr />
+        <h3>Khóa nâng cao</h3>
+        <br />
+        <div class="container tab-pane fade show active" id="_vanhoc" role="tabpanel" >
+            
+            @{ Html.RenderPartial("_vanhoc"); }
+        </div>
+        <hr />
+        <h3>Khóa học mới</h3>
+        <br />
+        @{ Html.RenderPartial("_PartitalView_SachMoi"); }
+        <br />
+        @{ Html.RenderPartial("_Paging"); }
+        <h3>Top bán chạy</h3>
+        <br />
+        @{ Html.RenderPartial("_PartitalView_SachBanChay"); }
+        <br />
+        @{ Html.RenderPartial("_Paging"); }
+        <hr />
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+
+            $(".regular").slick({
+                        dots: true,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000
+            });
+            $(".center").slick({
+                        dots: true,
+                infinite: true,
+                centerMode: true,
+                slidesToShow: 5,
+                slidesToScroll: 3,
+                responsive: [
+              {
+                            breakpoint: 1000,
+                  settings: {
+                                slidesToShow: 3,
+                      slidesToScroll: 2,
+                      infinite: true,
+                      dots: true
+                  }
+                            },
+              {
+                            breakpoint: 600,
+                  settings: {
+                                slidesToShow: 2,
+                      slidesToScroll: 1
+                  }
+                            }
+            ]
+            });
+
+                    });
+
+    @*$('#tabstrip a').click(function (e) {
+                        e.preventDefault()
+        var tabID = $(this).attr("href").substr(1);
+        $(".tab-pane").each(function () {
+                            console.log("clearing " + $(this).attr("id") + " tab");
+            $(this).empty();
+                        });
+
+        $.ajax({
+                        url: "/@ViewContext.RouteData.Values["controller"]/" + tabID,
+            cache: false,
+            type: "get",
+            dataType: "html",
+            success: function (result) {
+                $("#" + tabID).html(result);
+                            }
+
+                        })
+   $(this).tab('show')
+});*@
+    </script>
+
+</body>
+</html>
+

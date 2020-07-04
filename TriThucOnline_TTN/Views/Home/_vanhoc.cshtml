@@ -1,0 +1,19 @@
+﻿
+@model IEnumerable<TriThucOnline_TTN.Models.DAUSACH>
+
+<section class="center slider" style="">
+    @foreach (var item in ViewBag.vanhoc)
+    {
+        <div style="height:300px">
+            <a href="@Url.Action("Details", "DAUSACH", new { @id = item.MaSach })">
+
+                @*<img class="pic_book" src="@Url.Content("/Content/HinhAnhSP/" + @item.PicBook)" alt="Alternate Text" />*@
+                <img class="pic_book" src="~/Assets/User/image/khoahoc/khoa1.jpg" alt="Alternate Text" />
+                @*<p class="title_book">@item.TenSach</p>*@
+                <p class="title_book">Khóa học tiếng anh cơ bản</p>
+            </a>
+            <p class="price_book">@item.GiaTien</p>
+
+        </div>
+    }
+</section>

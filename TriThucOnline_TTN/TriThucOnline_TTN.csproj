@@ -1,0 +1,1062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{999846F4-9CA8-424B-93D1-70A743846F0D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TriThucOnline_TTN</RootNamespace>
+    <AssemblyName>TriThucOnline_TTN</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44368</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.8</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DAUSACHController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\QLDonHangController.cs" />
+    <Compile Include="Controllers\QuanLyKHController.cs" />
+    <Compile Include="Controllers\QuanLyKhuyenMaiController.cs" />
+    <Compile Include="Controllers\QuanLyNXBController.cs" />
+    <Compile Include="Controllers\QuanLySachController.cs" />
+    <Compile Include="Controllers\QuanLyTacGiaController.cs" />
+    <Compile Include="Controllers\QuanLyTheLoaiController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\TACGIAController.cs" />
+    <Compile Include="Controllers\THELOAIController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NXBController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\CT_DONHANG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAUSACH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DONHANG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KHACHHANG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KHUYENMAI.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NXB.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QUANTRIVIEN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TACGIA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\THELOAI.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Admin\css\Style_Index_Admin.css" />
+    <Content Include="Assets\User\css\scss\header.css" />
+    <Content Include="Assets\User\css\scss\landing-page.css" />
+    <Content Include="Assets\User\css\scss\responsive.css" />
+    <Content Include="Assets\User\css\scss\style.css" />
+    <Content Include="Assets\User\css\style_details_dausach.css" />
+    <Content Include="Assets\User\css\Style_Detail_NXB_TL_TACGIA.css" />
+    <Content Include="Assets\User\css\style_home.css" />
+    <Content Include="Assets\User\images\background.jpg" />
+    <Content Include="Assets\User\images\coment.jpg" />
+    <Content Include="Assets\User\images\default.jpg" />
+    <Content Include="Assets\User\images\e6s3jjs_image_blog1.png" />
+    <Content Include="Assets\User\images\hoc-ielts-dam-bao-tai-philippines.jpg" />
+    <Content Include="Assets\User\images\image_sach.jpg" />
+    <Content Include="Assets\User\images\khoa-hoc-ielts-online-dam-bao-va-uy-tin-tai-tphcm-004.jpg" />
+    <Content Include="Assets\User\image\2.png" />
+    <Content Include="Assets\User\image\5.png" />
+    <Content Include="Assets\User\image\6.png" />
+    <Content Include="Assets\User\image\8.png" />
+    <Content Include="Assets\User\image\bg3.jpg" />
+    <Content Include="Assets\User\image\blog.jpg" />
+    <Content Include="Assets\User\image\blog1.png" />
+    <Content Include="Assets\User\image\book-1.jpg" />
+    <Content Include="Assets\User\image\book.jpg" />
+    <Content Include="Assets\User\image\coment.jpg" />
+    <Content Include="Assets\User\image\contact.jpg" />
+    <Content Include="Assets\User\image\course.jpg" />
+    <Content Include="Assets\User\image\icons8-ball-point-pen-100.png" />
+    <Content Include="Assets\User\image\icons8-read-100.png" />
+    <Content Include="Assets\User\image\khoahoc\khoa 5.png" />
+    <Content Include="Assets\User\image\khoahoc\khoa1.jpg" />
+    <Content Include="Assets\User\image\khoahoc\khoa10.jpg" />
+    <Content Include="Assets\User\image\khoahoc\khoa2.jpg" />
+    <Content Include="Assets\User\image\khoahoc\khoa3.png" />
+    <Content Include="Assets\User\image\khoahoc\khoa4.jpg" />
+    <Content Include="Assets\User\image\khoahoc\khoa6.jpg" />
+    <Content Include="Assets\User\image\khoahoc\khoa7.jpg" />
+    <Content Include="Assets\User\image\khoahoc\khoa8.png" />
+    <Content Include="Assets\User\image\khoahoc\khoa9.jpg" />
+    <Content Include="Assets\User\image\LogoABC.png" />
+    <Content Include="Assets\User\image\nghe.png" />
+    <Content Include="Assets\User\image\noi.png" />
+    <Content Include="Assets\User\js\backtotop.js" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\PagedList.dll" />
+    <Content Include="bin\PagedList.Mvc.dll" />
+    <Content Include="bin\PagedList.Mvc.xml" />
+    <Content Include="bin\PagedList.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\Microsoft.Win32.Primitives.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Console.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.Globalization.Calendars.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.ZipFile.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Net.Http.dll" />
+    <Content Include="bin\roslyn\System.Net.Sockets.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Assets\Admin\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Assets\Admin\css\font-face.css" />
+    <Content Include="Assets\Admin\css\Style_Layout_Admin.css" />
+    <Content Include="Assets\Admin\css\theme.css" />
+    <Content Include="Assets\Admin\images\bg-title-01.jpg" />
+    <Content Include="Assets\Admin\images\bg-title-02.jpg" />
+    <Content Include="Assets\Admin\images\icon\avatar-01.jpg" />
+    <Content Include="Assets\Admin\images\icon\avatar-02.jpg" />
+    <Content Include="Assets\Admin\images\icon\avatar-03.jpg" />
+    <Content Include="Assets\Admin\images\icon\avatar-04.jpg" />
+    <Content Include="Assets\Admin\images\icon\avatar-05.jpg" />
+    <Content Include="Assets\Admin\images\icon\avatar-06.jpg" />
+    <Content Include="Assets\Admin\images\icon\avatar-big-01.jpg" />
+    <Content Include="Assets\Admin\images\icon\logo-mini.png" />
+    <Content Include="Assets\Admin\images\icon\logo-white.png" />
+    <Content Include="Assets\Admin\images\icon\LOGO.png" />
+    <Content Include="Assets\Admin\images\icon\Untitled-1.jpg" />
+    <Content Include="Assets\Admin\js\bootstrap-datetimepicker.js" />
+    <Content Include="Assets\Admin\js\main.js" />
+    <Content Include="Assets\Admin\js\moment.js" />
+    <Content Include="Assets\Admin\vendor\animsition\animsition.min.css" />
+    <Content Include="Assets\Admin\vendor\animsition\animsition.min.js" />
+    <Content Include="Assets\Admin\vendor\bootstrap-4.1\bootstrap.min.css" />
+    <Content Include="Assets\Admin\vendor\bootstrap-4.1\bootstrap.min.js" />
+    <Content Include="Assets\Admin\vendor\bootstrap-4.1\popper.min.js" />
+    <Content Include="Assets\Admin\vendor\bootstrap-progressbar\bootstrap-progressbar-3.3.4.min.css" />
+    <Content Include="Assets\Admin\vendor\bootstrap-progressbar\bootstrap-progressbar.min.js" />
+    <Content Include="Assets\Admin\vendor\chartjs\Chart.bundle.min.js" />
+    <Content Include="Assets\Admin\vendor\circle-progress\circle-progress.js" />
+    <Content Include="Assets\Admin\vendor\circle-progress\circle-progress.min.js" />
+    <Content Include="Assets\Admin\vendor\countdown\countdowntime.js" />
+    <Content Include="Assets\Admin\vendor\countdown\jquery.countdown.min.js" />
+    <Content Include="Assets\Admin\vendor\countdown\moment-timezone-with-data.min.js" />
+    <Content Include="Assets\Admin\vendor\countdown\moment-timezone.min.js" />
+    <Content Include="Assets\Admin\vendor\countdown\moment.min.js" />
+    <Content Include="Assets\Admin\vendor\counter-up\jquery.counterup.min.js" />
+    <Content Include="Assets\Admin\vendor\counter-up\jquery.waypoints.min.js" />
+    <Content Include="Assets\Admin\vendor\counter-up\waypoints.min.js" />
+    <Content Include="Assets\Admin\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Assets\Admin\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\css\font-awesome.css" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\css\font-awesome.min.css" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\HELP-US-OUT.txt" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\css\fontawesome-all.min.css" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-brands-400.svg" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-regular-400.svg" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\CHANGELOG.txt" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\CONTRIBUTING.txt" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\fullcalendar.css" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\fullcalendar.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\fullcalendar.min.css" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\fullcalendar.min.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\fullcalendar.print.css" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\fullcalendar.print.min.css" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\gcal.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\gcal.min.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\lib\moment.min.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\LICENSE.txt" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale-all.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\af.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ar-dz.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ar-kw.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ar-ly.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ar-ma.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ar-sa.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ar-tn.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ar.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\be.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\bg.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\bs.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ca.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\cs.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\da.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\de-at.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\de-ch.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\de.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\el.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\en-au.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\en-ca.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\en-gb.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\en-ie.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\en-nz.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\es-do.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\es-us.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\es.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\et.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\eu.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\fa.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\fi.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\fr-ca.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\fr-ch.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\fr.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\gl.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\he.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\hi.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\hr.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\hu.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\id.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\is.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\it.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ja.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ka.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\kk.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ko.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\lb.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\lt.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\lv.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\mk.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ms-my.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ms.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\nb.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\nl-be.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\nl.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\nn.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\pl.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\pt-br.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\pt.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ro.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\ru.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\sk.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\sl.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\sq.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\sr-cyrl.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\sr.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\sv.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\th.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\tr.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\uk.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\vi.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\zh-cn.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\zh-hk.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\locale\zh-tw.js" />
+    <Content Include="Assets\Admin\vendor\fullcalendar-3.10.0\README.txt" />
+    <Content Include="Assets\Admin\vendor\jquery-3.2.1.min.js" />
+    <Content Include="Assets\Admin\vendor\jquery-ui.min.js" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\css\lightbox.css" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\images\close.png" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\images\loading.gif" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\images\next.png" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\images\prev.png" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\js\lightbox-plus-jquery.js" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\js\lightbox.js" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\js\lightbox.min.js" />
+    <Content Include="Assets\Admin\vendor\lightbox2\src\css\lightbox.css" />
+    <Content Include="Assets\Admin\vendor\lightbox2\src\images\close.png" />
+    <Content Include="Assets\Admin\vendor\lightbox2\src\images\loading.gif" />
+    <Content Include="Assets\Admin\vendor\lightbox2\src\images\next.png" />
+    <Content Include="Assets\Admin\vendor\lightbox2\src\images\prev.png" />
+    <Content Include="Assets\Admin\vendor\lightbox2\src\js\lightbox.js" />
+    <Content Include="Assets\Admin\vendor\mdi-font\css\material-design-iconic-font.css" />
+    <Content Include="Assets\Admin\vendor\mdi-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Assets\Admin\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Assets\Admin\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Assets\Admin\vendor\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Assets\Admin\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Assets\Admin\vendor\progressbar\progressbar.js" />
+    <Content Include="Assets\Admin\vendor\progressbar\progressbar.min.js" />
+    <Content Include="Assets\Admin\vendor\select2\select2.min.css" />
+    <Content Include="Assets\Admin\vendor\select2\select2.min.js" />
+    <Content Include="Assets\Admin\vendor\slick\ajax-loader.gif" />
+    <Content Include="Assets\Admin\vendor\slick\fonts\slick.svg" />
+    <Content Include="Assets\Admin\vendor\slick\slick-theme.css" />
+    <Content Include="Assets\Admin\vendor\slick\slick.css" />
+    <Content Include="Assets\Admin\vendor\slick\slick.js" />
+    <Content Include="Assets\Admin\vendor\slick\slick.min.js" />
+    <Content Include="Assets\Admin\vendor\smk-accordion\accordion.css" />
+    <Content Include="Assets\Admin\vendor\smk-accordion\accordion.js" />
+    <Content Include="Assets\Admin\vendor\smk-accordion\accordion.min.js" />
+    <Content Include="Assets\Admin\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.brazil.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.europe.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.france.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.germany.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.min.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.russia.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.sampledata.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.usa.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jquery.vmap.world.js" />
+    <Content Include="Assets\Admin\vendor\vector-map\jqvmap.min.css" />
+    <Content Include="Assets\Admin\vendor\wow\animate.css" />
+    <Content Include="Assets\Admin\vendor\wow\wow.min.js" />
+    <Content Include="Assets\User\css\style.css" />
+    <Content Include="Assets\User\images\banner.png" />
+    <Content Include="Assets\User\images\slide_caption_1.jpg" />
+    <Content Include="Assets\User\images\slide_caption_2.jpg" />
+    <Content Include="Assets\User\images\slide_caption_3.jpg" />
+    <Content Include="Assets\User\images\slide_caption_4.jpg" />
+    <Content Include="Assets\User\images\slide_caption_5.jpg" />
+    <Content Include="Assets\User\js\even.js" />
+    <Content Include="bin\TriThucOnline_TTN.dll" />
+    <Content Include="bin\TriThucOnline_TTN.pdb" />
+    <Content Include="Content\HinhAnhSP\14_1.png" />
+    <Content Include="Content\HinhAnhSP\161.jpg" />
+    <Content Include="Content\HinhAnhSP\187.jpg" />
+    <Content Include="Content\HinhAnhSP\5555555555555555555555555.jpg" />
+    <Content Include="Content\HinhAnhSP\6e076a9087583e35575486c5cbc45ffa.jpg" />
+    <Content Include="Content\HinhAnhSP\8934974150879.jpg" />
+    <Content Include="Content\HinhAnhSP\8934974164135-qt.jpg" />
+    <Content Include="Content\HinhAnhSP\8935086838808.jpg" />
+    <Content Include="Content\HinhAnhSP\8935086843611.jpg" />
+    <Content Include="Content\HinhAnhSP\8935211187269.jpg" />
+    <Content Include="Content\HinhAnhSP\8935212330305.jpg" />
+    <Content Include="Content\HinhAnhSP\8935235213746.jpg" />
+    <Content Include="Content\HinhAnhSP\8935235215283.jpg" />
+    <Content Include="Content\HinhAnhSP\8935235216884.jpg" />
+    <Content Include="Content\HinhAnhSP\8935250712002.jpg" />
+    <Content Include="Content\HinhAnhSP\8935251403862.jpg" />
+    <Content Include="Content\HinhAnhSP\8935251405873.jpg" />
+    <Content Include="Content\HinhAnhSP\8935251405972_1.jpg" />
+    <Content Include="Content\HinhAnhSP\8935251407655.jpg" />
+    <Content Include="Content\HinhAnhSP\8935251414585.jpg" />
+    <Content Include="Content\HinhAnhSP\8935270700058-1_1_1.jpg" />
+    <Content Include="Content\HinhAnhSP\8936037710358.png" />
+    <Content Include="Content\HinhAnhSP\8936037710761_1.jpg" />
+    <Content Include="Content\HinhAnhSP\8936037799797.jpg" />
+    <Content Include="Content\HinhAnhSP\8936040589583.jpg" />
+    <Content Include="Content\HinhAnhSP\8936049524905.jpg" />
+    <Content Include="Content\HinhAnhSP\8936062804527-qt.jpg" />
+    <Content Include="Content\HinhAnhSP\8936066702621_1_2.jpg" />
+    <Content Include="Content\HinhAnhSP\8936067595758.jpg" />
+    <Content Include="Content\HinhAnhSP\8936067597936.jpg" />
+    <Content Include="Content\HinhAnhSP\8936067598643.jpg" />
+    <Content Include="Content\HinhAnhSP\8936071673800.jpg" />
+    <Content Include="Content\HinhAnhSP\8936071674173.jpg" />
+    <Content Include="Content\HinhAnhSP\8936071674579.jpg" />
+    <Content Include="Content\HinhAnhSP\8936186544071_1_1.jpg" />
+    <Content Include="Content\HinhAnhSP\8936186544125.jpg" />
+    <Content Include="Content\HinhAnhSP\91727.jpg" />
+    <Content Include="Content\HinhAnhSP\9786045641040.jpg" />
+    <Content Include="Content\HinhAnhSP\9786047736041_2.jpg" />
+    <Content Include="Content\HinhAnhSP\9786047736058.jpg" />
+    <Content Include="Content\HinhAnhSP\9786047740277.jpg" />
+    <Content Include="Content\HinhAnhSP\9786048434052.jpg" />
+    <Content Include="Content\HinhAnhSP\9786049573569_1.jpg" />
+    <Content Include="Content\HinhAnhSP\9789822288988.jpg" />
+    <Content Include="Content\HinhAnhSP\bia---dam-thay-doi.jpg" />
+    <Content Include="Content\HinhAnhSP\bia-1_kinhvanhoa_tap-4_mem.jpg" />
+    <Content Include="Content\HinhAnhSP\bia-am-da-hanh-01.jpg" />
+    <Content Include="Content\HinhAnhSP\bia-toi_no_tuong_lai_mot_ngay_hanh_phuc.jpg" />
+    <Content Include="Content\HinhAnhSP\bialondithoi.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_26_8.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_can-bang-cam-xuc.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_cu-song-tam-bo-mai-duoc-sao-final-1.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_final.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_nang_len_duoc_dat_xuong_duoc-1.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_olaithanhphohayveque-01_1.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_song-don-gian-cho-minh-thanh-than.jpg" />
+    <Content Include="Content\HinhAnhSP\bia_vongquanhnoibuon.jpg" />
+    <Content Include="Content\HinhAnhSP\bieutuongthattruyen.jpg" />
+    <Content Include="Content\HinhAnhSP\buoc_cham_lai_giua_the_gian_voi_va.u335.d20160817.t102115.612356.jpg" />
+    <Content Include="Content\HinhAnhSP\b_a-chu_n-_1_.jpg" />
+    <Content Include="Content\HinhAnhSP\b_a-trc-y_u-m_nh-trc-_-01.jpg" />
+    <Content Include="Content\HinhAnhSP\combo-8936037711331-8936037799834.jpg" />
+    <Content Include="Content\HinhAnhSP\conchonhobiathuong.jpg" />
+    <Content Include="Content\HinhAnhSP\cover-1---m_-_om-_m.jpg" />
+    <Content Include="Content\HinhAnhSP\cover-chi_n-thu_t-lo_i-b_-lo-l_ng.jpg" />
+    <Content Include="Content\HinhAnhSP\cover-chi_n-thu_t-qu_n-l_-th_i-gian.jpg" />
+    <Content Include="Content\HinhAnhSP\cristiano-_-leo---bia-1.jpg" />
+    <Content Include="Content\HinhAnhSP\cs-19-tinvaongaymai.u84.d20161126.t011006.704696.jpg" />
+    <Content Include="Content\HinhAnhSP\cuoicungnguoivandi_1.jpg" />
+    <Content Include="Content\HinhAnhSP\duongmayxutuyetnew.u5762.d20171011.t095442.6383_1.jpg" />
+    <Content Include="Content\HinhAnhSP\fffffffffffffff_1_3_2.jpg" />
+    <Content Include="Content\HinhAnhSP\hanh_phuc_khong_nam_trong_vi_bia_1.jpg" />
+    <Content Include="Content\HinhAnhSP\hoang-loan-hon-loan-va-cuong-loan--01.jpg" />
+    <Content Include="Content\HinhAnhSP\hoi-ky-bui-kien-thanh-b_a-1.jpg" />
+    <Content Include="Content\HinhAnhSP\huyen-thuat-va-cac-dao-sy-tay-tang.jpg" />
+    <Content Include="Content\HinhAnhSP\image_123079.jpg" />
+    <Content Include="Content\HinhAnhSP\image_127127.jpg" />
+    <Content Include="Content\HinhAnhSP\image_130113.jpg" />
+    <Content Include="Content\HinhAnhSP\image_134014.jpg" />
+    <Content Include="Content\HinhAnhSP\image_134016.jpg" />
+    <Content Include="Content\HinhAnhSP\image_136963.jpg" />
+    <Content Include="Content\HinhAnhSP\image_138366.jpg" />
+    <Content Include="Content\HinhAnhSP\image_140322.jpg" />
+    <Content Include="Content\HinhAnhSP\image_174210.jpg" />
+    <Content Include="Content\HinhAnhSP\image_177780.jpg" />
+    <Content Include="Content\HinhAnhSP\image_179061.jpg" />
+    <Content Include="Content\HinhAnhSP\image_180164_1_43_1_57_1_4_1_2_1_210_1_29_1_98_1_25_1_21_1_5_1_3_1_18_1_18_1_45_1_26_1_32_1_14_1_1233.jpg" />
+    <Content Include="Content\HinhAnhSP\image_180164_1_43_1_57_1_4_1_2_1_210_1_29_1_98_1_25_1_21_1_5_1_3_1_18_1_18_1_45_1_26_1_32_1_14_1_2199.jpg" />
+    <Content Include="Content\HinhAnhSP\image_180164_1_43_1_57_1_4_1_2_1_210_1_29_1_98_1_25_1_21_1_5_1_3_1_18_1_18_1_45_1_26_1_32_1_14_1_2662.jpg" />
+    <Content Include="Content\HinhAnhSP\image_180812.jpg" />
+    <Content Include="Content\HinhAnhSP\image_181813.jpg" />
+    <Content Include="Content\HinhAnhSP\image_182041.jpg" />
+    <Content Include="Content\HinhAnhSP\image_182745.jpg" />
+    <Content Include="Content\HinhAnhSP\image_183259.jpg" />
+    <Content Include="Content\HinhAnhSP\image_184792.jpg" />
+    <Content Include="Content\HinhAnhSP\image_186710.jpg" />
+    <Content Include="Content\HinhAnhSP\image_187010.jpg" />
+    <Content Include="Content\HinhAnhSP\image_187012.jpg" />
+    <Content Include="Content\HinhAnhSP\image_187195.jpg" />
+    <Content Include="Content\HinhAnhSP\image_187738.jpg" />
+    <Content Include="Content\HinhAnhSP\image_187843.jpg" />
+    <Content Include="Content\HinhAnhSP\image_188014.jpg" />
+    <Content Include="Content\HinhAnhSP\image_188104.jpg" />
+    <Content Include="Content\HinhAnhSP\image_188285.jpg" />
+    <Content Include="Content\HinhAnhSP\image_188733_1.jpg" />
+    <Content Include="Content\HinhAnhSP\image_188807.jpg" />
+    <Content Include="Content\HinhAnhSP\image_189157_1.jpg" />
+    <Content Include="Content\HinhAnhSP\image_189591.jpg" />
+    <Content Include="Content\HinhAnhSP\image_190115.jpg" />
+    <Content Include="Content\HinhAnhSP\image_190512.jpg" />
+    <Content Include="Content\HinhAnhSP\image_191588.jpg" />
+    <Content Include="Content\HinhAnhSP\image_192656.jpg" />
+    <Content Include="Content\HinhAnhSP\image_192661.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195135.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_12629.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_14922.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_16482.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_17267.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_20355.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_21580.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_22722.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_22978.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_23062.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_23371.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_23994.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_25998.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_26631.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_27262.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_28975.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_29509_1.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_29802.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_30721.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_31590.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_33312.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_34396.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_37347.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_37348.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_37353.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_37937.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_38858.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_4953.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_7222.jpg" />
+    <Content Include="Content\HinhAnhSP\image_195509_1_990.jpg" />
+    <Content Include="Content\HinhAnhSP\image_35.gif" />
+    <Content Include="Content\HinhAnhSP\image_58819.jpg" />
+    <Content Include="Content\HinhAnhSP\image_86237.jpg" />
+    <Content Include="Content\HinhAnhSP\khongconthoigiandebuon.jpg" />
+    <Content Include="Content\HinhAnhSP\kynanglamviecnhomcuanguoinhat_bia1.jpg" />
+    <Content Include="Content\HinhAnhSP\l_-ti_u-long---m_t-cu_c-_i-phi-th_ng.jpg" />
+    <Content Include="Content\HinhAnhSP\muon-an-thi-duoc-an.jpg" />
+    <Content Include="Content\HinhAnhSP\neuocsencotinhyeu-1.jpg" />
+    <Content Include="Content\HinhAnhSP\ngancanhhac_bia1_2.jpg" />
+    <Content Include="Content\HinhAnhSP\nghe_thuat_tu_duy_ranh_mach_u2487_d20161129_t103616_398639_550x550.jpg" />
+    <Content Include="Content\HinhAnhSP\nguoncoi.jpg" />
+    <Content Include="Content\HinhAnhSP\nhangoaicamphanthibichhang.jpg" />
+    <Content Include="Content\HinhAnhSP\nhungngaybuonchongqua.jpg" />
+    <Content Include="Content\HinhAnhSP\nnn_2.jpg" />
+    <Content Include="Content\HinhAnhSP\nong-gian-la-ban-nang-1.jpg" />
+    <Content Include="Content\HinhAnhSP\nxbtre_thumb_21542017_035423.jpg" />
+    <Content Include="Content\HinhAnhSP\resize_w500_hauto_nhan-sinh-muon-ve-dung-voi-so-do-bia-1-5e5f68d009a2f.jpg" />
+    <Content Include="Content\HinhAnhSP\roi_trong_choi_voi_full_final_1.jpg" />
+    <Content Include="Content\HinhAnhSP\sach.jpg" />
+    <Content Include="Content\HinhAnhSP\the-small-big.jpg" />
+    <Content Include="Content\HinhAnhSP\tim-minh-trong-the-gioi-hau-tuoi-tho-01-_2_.jpg" />
+    <Content Include="Content\HinhAnhSP\tu_truyen_le_cong_vinh-phut_89.jpg" />
+    <Content Include="Content\HinhAnhSP\unnamed_2_6.jpg" />
+    <Content Include="Content\HinhAnhSP\untitled-1_122_1.jpg" />
+    <Content Include="Content\HinhAnhSP\untitled-1_33_7.jpg" />
+    <Content Include="Content\HinhAnhSP\untitled-1_42.jpg" />
+    <Content Include="Content\HinhAnhSP\untitled-1_9_25_1.jpg" />
+    <Content Include="Content\HinhAnhSP\untitled-ssssssssss1.jpg" />
+    <Content Include="Content\HinhAnhSP\ww_1.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="obj\Debug\TempPE\Areas.Admin.Models.SQL_TriThucOnline_BanSach.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Areas.Admin.Models.SQL_TriThucOnline_BanSach.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Areas.Admin.Models.SQL_TriThucOnline_BanSach.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.SQL_TriThucOnline_BanSach.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.SQL_TriThucOnline_BanSach.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.SQL_TriThucOnline_BanSach.Designer.cs.dll" />
+    <Content Include="obj\Debug\TriThucOnline_TTN.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TriThucOnline_TTN.dll" />
+    <Content Include="obj\Debug\TriThucOnline_TTN.pdb" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Admin\vendor\font-awesome-4.7\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-brands-400.eot" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-brands-400.ttf" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-brands-400.woff" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-brands-400.woff2" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-regular-400.eot" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-regular-400.ttf" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-regular-400.woff" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-regular-400.woff2" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-solid-900.eot" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-solid-900.ttf" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-solid-900.woff" />
+    <Content Include="Assets\Admin\vendor\font-awesome-5\webfonts\fa-solid-900.woff2" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Assets\Admin\vendor\lightbox2\dist\js\lightbox.min.map" />
+    <Content Include="Assets\Admin\vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Assets\Admin\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Assets\Admin\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Assets\Admin\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Assets\Admin\vendor\slick\config.rb" />
+    <Content Include="Assets\Admin\vendor\slick\fonts\slick.eot" />
+    <Content Include="Assets\Admin\vendor\slick\fonts\slick.ttf" />
+    <Content Include="Assets\Admin\vendor\slick\fonts\slick.woff" />
+    <Content Include="Assets\Admin\vendor\slick\slick-theme.less" />
+    <Content Include="Assets\Admin\vendor\slick\slick-theme.scss" />
+    <Content Include="Assets\Admin\vendor\slick\slick.less" />
+    <Content Include="Assets\Admin\vendor\slick\slick.scss" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\SQL_TriThucOnline_BanSach.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\SQL_TriThucOnline_BanSach.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\SQL_TriThucOnline_BanSach.ssdl" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\TriThucOnline_TTN.csproj.CopyComplete" />
+    <Content Include="obj\Debug\TriThucOnline_TTN.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\TriThucOnline_TTN.csprojAssemblyReference.cache" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\TriThucOnline_TTN.dll.config" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Assets\User\css\scss\Roboto-Regular.ttf" />
+    <None Include="Scripts\jquery-3.5.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.0.js" />
+    <Content Include="Scripts\jquery-3.5.0.min.js" />
+    <Content Include="Scripts\jquery-3.5.0.slim.js" />
+    <Content Include="Scripts\jquery-3.5.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\slick\.gitignore" />
+    <Content Include="Scripts\slick\index.html" />
+    <Content Include="Scripts\slick\slick\ajax-loader.gif" />
+    <Content Include="Scripts\slick\slick\fonts\slick.svg" />
+    <Content Include="Scripts\slick\slick\slick-theme.css" />
+    <Content Include="Scripts\slick\slick\slick.css" />
+    <Content Include="Scripts\slick\slick\slick.js" />
+    <Content Include="Scripts\slick\slick\slick.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\NXB\Details.cshtml" />
+    <Content Include="Views\TACGIA\Details.cshtml" />
+    <Content Include="Views\THELOAI\Details.cshtml" />
+    <Content Include="Views\Shared\_LayoutAmin.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\QuanLyKH\Index.cshtml" />
+    <Content Include="Views\DAUSACH\Details.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\slick\bower.json" />
+    <Content Include="Scripts\slick\component.json" />
+    <Content Include="Scripts\slick\CONTRIBUTING.markdown" />
+    <Content Include="Scripts\slick\ISSUE_TEMPLATE.md" />
+    <Content Include="Scripts\slick\LICENSE" />
+    <Content Include="Scripts\slick\Makefile" />
+    <Content Include="Scripts\slick\package.json" />
+    <Content Include="Scripts\slick\README.markdown" />
+    <Content Include="Scripts\slick\slick.jquery.json" />
+    <Content Include="Scripts\slick\slick\config.rb" />
+    <Content Include="Scripts\slick\slick\fonts\slick.eot" />
+    <Content Include="Scripts\slick\slick\fonts\slick.ttf" />
+    <Content Include="Scripts\slick\slick\fonts\slick.woff" />
+    <Content Include="Scripts\slick\slick\slick-theme.less" />
+    <Content Include="Scripts\slick\slick\slick-theme.scss" />
+    <Content Include="Scripts\slick\slick\slick.less" />
+    <Content Include="Scripts\slick\slick\slick.scss" />
+    <Content Include="Views\Admin\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\MenuTabHome_PartialView.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\TotalBook.cshtml" />
+    <Content Include="Views\Admin\TotalDHChuaThanhToan.cshtml" />
+    <Content Include="Views\Admin\TotalMember.cshtml" />
+    <Content Include="Views\Admin\TotalMoney.cshtml" />
+    <Content Include="Views\NguoiDung\Login.cshtml" />
+    <Content Include="Views\NguoiDung\Register.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\DatHangPartial.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\Index.cshtml" />
+    <Content Include="Views\GioHang\Success.cshtml" />
+    <Content Include="Views\GioHang\TongSlGioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\TongTienGioHangPartial.cshtml" />
+    <Content Include="Views\QuanLyKhuyenMai\Index.cshtml" />
+    <Content Include="Views\GioHang\Confirm.cshtml" />
+    <Content Include="Views\QuanLySach\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLySach\HienThi.cshtml" />
+    <Content Include="Views\QuanLySach\Index.cshtml" />
+    <Content Include="Views\QuanLySach\ThemMoi.cshtml" />
+    <Content Include="Views\QuanLySach\XemCTSachPartial.cshtml" />
+    <Content Include="Views\QuanLySach\Xoa.cshtml" />
+    <Content Include="Views\QuanLyTacGia\Create.cshtml" />
+    <Content Include="Views\QuanLyTacGia\Edit.cshtml" />
+    <Content Include="Views\QuanLyTacGia\Index.cshtml" />
+    <Content Include="Views\Home\_kinhte.cshtml" />
+    <Content Include="Views\Home\_vanhoc.cshtml" />
+    <Content Include="Views\Home\_thieunhi.cshtml" />
+    <Content Include="Views\Home\_tamli.cshtml" />
+    <Content Include="Views\Home\_hoiki.cshtml" />
+    <Content Include="Views\Home\_giaokhoa.cshtml" />
+    <Content Include="Views\Home\_ngoaingu.cshtml" />
+    <Content Include="Views\Home\_nuoidaycon.cshtml" />
+    <Content Include="Views\Home\_vanphongpham.cshtml" />
+    <Content Include="Views\Shared\_PartitalView_SachMoi.cshtml" />
+    <Content Include="Views\Shared\_PartitalView_SachBanChay.cshtml" />
+    <Content Include="Views\Home\_Paging.cshtml" />
+    <Content Include="Views\NguoiDung\Details.cshtml" />
+    <Content Include="Views\DAUSACH\_PartitalView_SachLienQuan.cshtml" />
+    <Content Include="Views\QuanLySach\Search.cshtml" />
+    <Content Include="Views\QuanLyTheLoai\Create.cshtml" />
+    <Content Include="Views\QuanLyTheLoai\Edit.cshtml" />
+    <Content Include="Views\QuanLyTheLoai\Index.cshtml" />
+    <Content Include="Views\QuanLyTheLoai\IndexPartial.cshtml" />
+    <Content Include="Views\QuanLyTheLoai\XemCTCDPartial.cshtml" />
+    <Content Include="Views\QuanLyTacGia\XemCTTGPartial.cshtml" />
+    <Content Include="Views\QuanLyTacGia\IndexPartial.cshtml" />
+    <Content Include="Views\QuanLySach\IndexPartial.cshtml" />
+    <Content Include="Views\QuanLyKhuyenMai\Create.cshtml" />
+    <Content Include="Views\QuanLyKhuyenMai\Edit.cshtml" />
+    <Content Include="Views\QuanLyKhuyenMai\IndexPartial.cshtml" />
+    <Content Include="Views\QuanLyKhuyenMai\XemCTKMPartial.cshtml" />
+    <Content Include="Views\QuanLyNXB\Create.cshtml" />
+    <Content Include="Views\QuanLyNXB\Edit.cshtml" />
+    <Content Include="Views\QuanLyNXB\Index.cshtml" />
+    <Content Include="Views\QuanLyNXB\IndexPartial.cshtml" />
+    <Content Include="Views\QuanLyNXB\XemCTNXBPartial.cshtml" />
+    <Content Include="Views\QuanLyKH\IndexPartial.cshtml" />
+    <Content Include="Views\QuanLyKH\XemCTKHPartial.cshtml" />
+    <Content Include="Views\QuanLyKH\XemCTDHKHPartial.cshtml" />
+    <Content Include="Views\QLDonHang\Index.cshtml" />
+    <Content Include="Views\QLDonHang\IndexPartial.cshtml" />
+    <Content Include="Views\QLDonHang\XemCTDHPartial.cshtml" />
+    <Content Include="Views\QLDonHang\Edit.cshtml" />
+    <Content Include="Views\QLDonHang\XemCTKHPartial.cshtml" />
+    <Content Include="Views\NguoiDung\IndexPartial.cshtml" />
+    <Content Include="Views\NguoiDung\XemCTDHPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Assets\User\icon\" />
+    <Folder Include="Assets\User\vendor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56145</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44368/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

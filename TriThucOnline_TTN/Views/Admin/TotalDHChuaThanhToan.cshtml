@@ -1,0 +1,17 @@
+﻿@using TriThucOnline_TTN.Models;
+@{ 
+    SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+    var sum = (from s in db.DONHANGs
+               select s).Count();
+    var sumChuaThanhToan = (from s in db.DONHANGs
+                            where s.TrangThaiThanhToan == "Chưa thanh toán"
+                            select s).Count();
+}
+<div class="col-md-3 col-sm-3 col-xs-6">
+    <a data-toggle="tooltip" title="12 new messages." class="well top-block" href="#">
+        <i class="glyphicon glyphicon-tasks red"></i>
+        <div>Đơn hàng</div>
+        <div>@sum</div>
+        <span class="notification red">@sumChuaThanhToan chưa giao</span>
+    </a>
+</div>

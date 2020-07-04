@@ -1,0 +1,74 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.DAUSACH>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th width="80">
+                    <span class="text-primary">Mã</span>
+                </th>
+                <th>
+                    <span class="text-primary">Tên sách</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Ảnh bìa</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Số lượng tồn</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Thể loại</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">NXB</span>
+
+                </th>
+                <th><span class="text-primary">Chức năng</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="80">
+                        @Html.DisplayFor(modelItem => item.MaSach)
+                    </td>
+                    <td width="200">
+                        @Html.DisplayFor(modelItem => item.TenSach)
+                    </td>
+                    <td>
+                        <div id="AnhBia">
+                            <img src="@Url.Content("~/Content/HinhAnhSP/"+item.PicBook)" class="img-responsive" style="width: 150px; height: auto"/>
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoLuongTon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.THELOAI.TenTL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NXB.TenNXB)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Chỉnh sửa", "ChinhSua", new { @MaSach = item.MaSach }) |
+                            @Html.ActionLink("Hiển thị", "HienThi", new { @MaSach = item.MaSach }) |
+                            @Html.ActionLink("Xoa", "Xoa", new { @MaSach = item.MaSach })*@
+
+                        <a href="/QuanLySach/ChinhSua?MaSach=@item.MaSach"><i class="far fa-edit"></i></a>
+                        @*<a href="/QuanLySach/HienThi?MaSach=@item.MaSach" class="btn btn-primary btn-sm btn-color-primary"><i class="glyphicon glyphicon-eye-open"></i></a>*@
+                        <button onclick="ChiTietSach('@item.MaSach')"><i class="fas fa-info-circle"></i></button>
+                        <button onclick="delete_article('@item.MaSach')"><i class="far fa-trash-alt" style="color:red"></i></button>
+
+</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,132 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.DONHANG>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="text-primary">Mã</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Ngày mua hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">Ngày giao hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">Trạng thái thanh toán</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaDH)
+                    </td>
+                    <td>
+                        @item.NgayMuaHang.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @item.NgayGiao.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrangThaiThanhToan)
+                    </td>
+                    <td>
+                        <a onclick="ChiTietDH('@item.MaDH')" data-toggle="tooltip" title="Chi tiết đơn hàng">
+                            <i class="fas fa-cart-arrow-down"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+    
+    <div>
+        @{
+            int PrevPage = Model.PageNumber - 1;
+            if (PrevPage <= 0)
+            {
+                PrevPage = 1;
+            }
+            int NextPage = Model.PageNumber + 1;
+            if (NextPage > Model.PageCount)
+            {
+                NextPage = Model.PageCount;
+            }
+        }
+        <ul class="pagination justify-content-center>
+            <li class="page-item">
+                <a class="page-link" onclick="ShowOrder(@PrevPage)">Prev</a>
+            </li>
+            @for (int i = 0; i < Model.PageCount; i++)
+            {
+                if ((i + 1) == Model.PageNumber)
+                {
+                    <li class="page-item active">
+                        <a class="page-link" onclick="ShowOrder(@i+1)">@(i + 1)</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" onclick="ShowOrder(@i+1)">@(i + 1)</a>
+                    </li>
+                }
+            }
+            <li class="page-item">
+                <a class="page-link" onclick="ShowOrder(@NextPage)">Next</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+<script>
+    function ChiTietDH(madh) {
+        $.ajax({
+            type: 'GET',
+            url: '/NguoiDung/XemCTDHPartial',
+            data: { madh: madh },
+            success: function (data) {
+                    $("#All_Dialog").html(data);
+            }
+        });
+        $('#title_modal').text("Chi tiết đơn hàng");
+        $('#myModal').on('shown.bs.modal', function () {
+            $(this).find('.modal-dialog').css({
+                width: '100%',
+                height: 'auto',
+                'max-height': '100%',
+                'max-width': '1000px',
+            });
+        });
+        $("#myModal").modal();
+    }
+</script>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="title_modal">Chi tiết đơn hàng</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @* nội dung bên trong all_dialog *@
+                <div id="All_Dialog"></div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

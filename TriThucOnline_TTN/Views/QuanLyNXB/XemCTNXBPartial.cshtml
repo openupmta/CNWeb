@@ -1,0 +1,23 @@
+﻿@using TriThucOnline_TTN.Models;
+@model List<NXB>
+
+<table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Mã nhà xuất bản:</th>
+            <th>Tên nhà xuất bản:</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaNXB</td>
+                <td>@item.TenNXB</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,44 @@
+﻿@using TriThucOnline_TTN.Models;
+@model List<DONHANG>
+
+<table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Mã đơn hàng:</th>
+            <th>Tên khách hàng:</th>
+            <th>Ngày mua hàng:</th>
+            <th>SĐT khách hàng:</th>
+            <th>Ngày giao hàng:</th>
+            <th>Trạng thái thanh toán:</th>
+            <th>Trạng thái giao hàng:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.MaDH</td>
+            <td>@item.KHACHHANG.TenKH</td>
+            <td>
+                @item.NgayMuaHang.Value.ToString("dd/MM/yyyy")
+            </td>
+            <td>@item.KHACHHANG.SDT</td>
+            <td>@item.NgayGiao.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.TrangThaiThanhToan</td>
+            <td>
+                @{if (item.TrangThaiGiao == 1)
+                    {
+                        <p>Thành công</p>
+                    }
+                    else
+                    {
+                        <p>Chưa giao hàng</p>
+                    }
+                        }
+                    </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

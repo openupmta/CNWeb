@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TriThucOnline_TTN.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .checkout{
+        margin-top:30px;
+    }
+    .checkout_address, .checkout_shippingmethod, .checkout_paymentmethod, .checkout_otherinfo, .checkout_products {
+        background-color: white;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .checkout .tieude {
+        text-transform: uppercase;
+    }
+
+    .checkout_products .table-borderless tr {
+        border-bottom: 2px solid #e4e4e4;
+    }
+
+    .total {
+        width: 100%;
+        background-color: white;
+        border-top: 1px solid gray;
+        box-shadow: 0px -4px 10px -4px rgba(0,0,0,0.66);
+        padding-bottom: 10px;
+        padding-top: 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+        .total hr {
+            margin-top: 0px;
+        }
+
+    .checkout_total {
+        float: right;
+    }
+
+        .checkout_total p {
+            display: inline-block;
+            float: right;
+            padding-right: 40px;
+        }
+
+    .checkout_products {
+        margin-bottom: 250px;
+    }
+
+        .checkout_products .products_detail img {
+            width: 125px;
+        }
+
+    .checkout_total--confirm button {
+        width: 300px;
+        line-height: 30px;
+        text-align: center;
+        float: right;
+        border-radius: 30px;
+    }
+
+    .checkout_total--backcart a b p {
+        margin-top: 10px;
+    }
+    .cuoitrang{
+        display:none;
+    }
+</style>
+
+
+<body style="background-color:#e4e4e4">
+    <div class="container checkout">
+        <div class="checkout_address">
+            <h4 class="tieude">ĐỊA CHỈ GIAO HÀNG</h4>
+            <HR></HR>
+            <div class="address_detail">
+                <div>
+                    <input type="radio" id="address" name="address" value="address">
+                    <label for="address">@Model.DiaChi | @Model.SDT</label>
+                </div>
+                <div>
+                    <input type="radio" id="address_new" name="address" value="address_new">
+                    <label for=""></label> Giao hàng đến địa chỉ khác
+                </div>
+            </div>
+        </div>
+        <div class="checkout_shippingmethod">
+            <h4 class="tieude">PHƯƠNG THỨC VẬN CHUYỂN</h4>
+            <hr>
+            <p>Miễn phí cho đơn hàng trên 140K HCM, HN, và 250K cho các tỉnh khác</p>
+            <div class="shippingmethod_detail">
+                <div>
+                    <input type="radio" id="ghtc" name="shippingmethod" value="ghtc">
+                    <label for="ghtc"></label> Giao hàng tiêu chuẩn: 15.000 đ
+                </div>
+                <div>
+                    <input type="radio" id="ghn" name="shippingmethod" value="ghn">
+                    <label for="ghn"></label> Giao hàng nhanh: 20.000 đ
+                </div>
+                <div>
+                    <input type="radio" id="ghtk" name="shippingmethod" value="ghtk">
+                    <label for="ghtk"></label> Giao hàng tiết kiệm: 23.000 đ
+                </div>
+            </div>
+        </div>
+        <div class="checkout_paymentmethod">
+            <h4 class="tieude">phương thức thanh toán</h4>
+            <HR></HR>
+            <div class="paymentmethod_detail">
+                <div>
+                    <input type="radio" id="cknh" name="paymentmethod" value="cknh">
+                    <label for="cknh"></label> Chuyển khoản ngân hàng
+                </div>
+                <div>
+                    <input type="radio" id="tttm" name="paymentmethod" value="tttm">
+                    <label for="tttm"></label> Thanh toán bằng tiền mặt khi nhận hàng
+                </div>
+                <div>
+                    <input type="radio" id="momo" name="paymentmethod" value="momo">
+                    <label for="momo"></label> MomoPay Wallet
+                </div>
+                <div>
+                    <input type="radio" id="visa" name="paymentmethod" value="visa">
+                    <label for="visa"></label> Visa / Master / JCB
+                </div>
+                <div>
+                    <input type="radio" id="zalo" name="paymentmethod" value="zalo">
+                    <label for="zalo"></label> ZaloPay Wallet
+                </div>
+            </div>
+        </div>
+        <div class="checkout_otherinfo">
+            <h4 class="tieude">thông tin khác</h4>
+            <HR></HR>
+            <div class="otherinfo_detail">
+                <div>
+                    <input type="radio" id="ghichu" name="otherinfo" value="ghichu">
+                    <label for="ghichu">Ghi chú</label>
+                </div>
+                <div>
+                    <input type="radio" id="hdvat" name="otherinfo" value="hdvat">
+                    <label for="hdvat"> Xuất hóa đơn VAT</label>
+                </div>
+                <div>
+                    <input type="date" id="NgayGiao" name="" value="@DateTime.Now.AddDays(10).ToString("yyyy-MM-dd")">
+                    <label for="NgayGiao"> Xuất hóa đơn VAT</label>
+                </div>
+            </div>
+        </div>
+        <div class="checkout_products" style="margin-bottom:330px">
+            <h4 class="tieude">Kiểm tra lại đơn hàng</h4>
+            <HR></HR>
+            <div class="products_detail" id="GioHang">
+                <table class="table table-borderless">
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-fluid total">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="checkout_otherinfo">
+                        <div class="otherinfo_detail">
+                            <div class="khuyenmai" style="background-color: white;">
+                                <h5 class="td_khuyenmai">
+                                    <i class="fas fa-percent"></i>
+                                    <p style="display:inline-block">Khuyến mãi</p>
+                                </h5>
+                                <p id="SpanKhuyenMai">Nhập mã TRITHUCONLINEAPP - Giảm thêm 30% cho ĐH từ 49K (Áp dụng cho khách hàng mua trên App)</p>
+                                <div style="padding-bottom:15px;">
+                                    <input type="text" placeholder="Mã khuyến mãi" id="coupon_code">
+                                    <button class="btn btn-primary" onclick="KhuyenMai()">Áp dụng</button>
+                                </div>
+
+                                <div class="progress">
+                                    <div class="progress-bar" id="prgb_discount" style="width:0%">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="checkout_total">
+                                <div class="checkout_total--subtotal">
+                                    <p> Thành tiền </p>
+                                </div>
+                                <div class="checkout_total--discount">
+                                    <p> Giam giá (VIP TrithucOnline) </p>
+                                </div>
+                                <div class="checkout_total--shipping">
+                                    <p> Phí vận chuyển  </p>
+                                </div>
+                                <div class="checkout_total--giatien">
+                                    <p><b>Tổng số tiền (gồm VAT)</b></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p id="totalprice">//subtotal</p>
+                            <p id="value_discount">//sotiengiam</p>
+                            <p>//phivanchuyen</p>
+                            <p id="totalpayment"><b>//TongTien</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="checkout_total--confirm">
+                <button class="btn btn-success" onclick="DathangSubmit()"><b>Xác nhận thanh toán</b></button>
+            </div>
+            <div class="checkout_total--backcart">
+                <a href="@Url.Action("Index","GioHang")">
+                    <b>
+                        <i class="fas fa-arrow-left" style="display:inline-block; padding-right:7px"></i>
+                        <p style="display:inline-block">Quay về giỏ hàng</p>
+                    </b>
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+        $(document).ready(function () {
+            
+            CheckoutCart();
+        });
+</script>

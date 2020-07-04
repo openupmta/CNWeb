@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "XemDonHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .thongtin_hoadon {
+        border:2px solid #ccc;
+        border-radius:10px;
+        padding:15px 15px 0px 15px;
+
+    }
+        .thongtin_hoadon h5 {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align:center;
+        }
+    .money_hoadon{
+        margin-left:55%;
+    }
+    label.money_db{
+        width:30%;
+    }
+    label.money_name{
+        width:65%;
+    }
+</style>
+
+    <div class="container" style="background-color:white">
+        <div style="padding:30px">
+
+
+            <h2 style="text-align:center">Hóa Đơn </h2>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p>Mã Đơn Hàng</p>
+                    <p>Ngày Mua Hàng</p>
+                    <p>Ngày Giao Hàng</p>
+                    <p>Nhà Cung Cấp</p>
+                   
+                    <p>Ghi Chú Của KH</p>
+                </div>
+                <div class="col-sm-9">
+                    <p>// Madonhang</p>
+                    <p>//Ngaymuahang</p>
+                    <p>//Ngaygiaohang</p>
+                    <p>Công ty phân phối sách trực tuyến TriThucOnline</p>
+                    <p>// ghichu (nếu có)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="thongtin_hoadon">
+                        <h5>Thông tin người nhận hàng</h5>
+                        <div>
+                            <p>Hoten</p>
+                            <p>SDT</p>
+                            <p>Diachi</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="thongtin_hoadon">
+                        <h5>Đơn vị vận chuyển</h5>
+                        <div>
+                            <p>donvivanchuyen</p>
+                            <p>phivanchuyen</p>
+                            <p>thoigiandutinh</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-4">
+                    <div class="thongtin_hoadon">
+                        <h5>Hình thức thanh toán</h5>
+                        <div>
+                            <p>Hinhthucthanhtoan</p>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            <table class="table table-striped" style="margin:20px 0px 20px 0px;">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Gía</th>
+                    <th>Thành tiền</th>
+                </tr>
+                <tr>
+                    <td>//stt</td>
+                    <td>//tensanpham</td>
+                    <td>//soluong</td>
+                    <td>//gia</td>
+                    <td>//thanhtien</td>
+                </tr>
+               
+            </table>
+            <hr />
+            <div class="money_hoadon">
+                <b>
+                    <label class="money_name">Tổng tiền</label>
+                    <label class="money_db">//tongtien</label>
+                    <label class="money_name">Chi phí vận chuyển</label>
+                    <label class="money_db">//phivanchuyen</label>
+                    <label class="money_name">Giam giá</label>
+                    <label class="money_db">//giamgia</label>
+                    <label class="money_name">Tổng số tiền kh phải thanh toán</label>
+                    <label class="money_db">//chotha</label>
+
+                </b>
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,109 @@
+﻿@model TriThucOnline_TTN.Models.DAUSACH
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+<h3>Bạn có thật sự muốn xóa quyển sách này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <span class="control-label col-md-3"><strong>Mã sách</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSach)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Tên sách</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Giá tiền</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaTien)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Trích dẫn</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrichDan)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Năm xuất bản</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamXuatBan)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Ảnh bìa</strong></span>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.AnhBia)*@
+            <div class="fileinput fileinput-new" style="height:180px">
+                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 180px">
+                    <img src="@Url.Content("~/Content/HinhAnhSP/"+Model.PicBook)">
+                </div>
+            </div>
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Số lượng</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Thể loại</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THELOAI.TenTL)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Nhà xuất bản</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NXB.TenNXB)
+        </dd>
+
+        <dt>
+            <span class="control-label col-md-3"><strong>Mới</strong></span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>
+
+

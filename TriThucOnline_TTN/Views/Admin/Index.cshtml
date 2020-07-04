@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+    </ul>
+</div>
+<div class=" row">
+    @{Html.RenderPartial("TotalMember");}
+    @{Html.RenderPartial("TotalBook");}
+    @{Html.RenderPartial("TotalMoney");}
+    @{Html.RenderPartial("TotalDHChuaThanhToan"); }
+</div>
+

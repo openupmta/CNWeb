@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "GioHangTrong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}\
+<style>
+     a.muasam:hover{
+        zoom:1.03
+    }
+     .muasam{
+         padding:5px 20px;
+         border-radius:30px;
+     }
+</style>
+    <div class="container" style="background-color:white">
+        <div style="padding:20px">
+            <h2 style="margin-bottom:30px;">Giỏ Hàng Trống</h2>
+            <div style="text-align:center">
+                <i class="fas fa-cart-plus" style="zoom:8; color:#ccc; margin-bottom:4px;"></i>
+                <p>Chưa có sản phẩm trong giỏ hàng của bạn.</p>
+                <a href="@Url.Action("Index","Home")" class="btn btn-info muasam">Tiếp tục mua sắm</a>
+            </div>
+        </div>
+        
+    </div>
+
+

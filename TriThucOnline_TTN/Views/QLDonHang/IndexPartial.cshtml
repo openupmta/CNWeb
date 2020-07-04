@@ -1,0 +1,98 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.DONHANG>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="text-primary">Mã</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Tên khách hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">Ngày mua hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">Ngày giao hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">Trạng thái giao hàng</span>
+                </th>
+                <th>
+                    <span class="text-primary">Trạng thái thanh toán</span>
+                </th>
+                <th>
+                    <span class="text-primary">Khuyến mãi</span>
+                </th>
+                <th>
+                    <span class="text-primary">Chức năng</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaDH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KHACHHANG.TenKH)
+                    </td>
+                    <td>
+                        @item.NgayMuaHang.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @item.NgayGiao.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @{if (item.TrangThaiGiao == 1)
+                            {
+                                <p>Thành công</p>
+                            }
+                            else
+                            {
+                                <p>Chưa giao hàng</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrangThaiThanhToan)
+                    </td>
+                    <td>
+                        @{if (item.KHUYENMAI != null)
+                            {
+                        <p>@Html.DisplayFor(modelItem => item.KHUYENMAI.GiaTriKM)%</p>
+                            }
+                            else
+                            {
+                        <p>0 %</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { @MaDH = item.MaDH })" data-toggle="tooltip" title="Chỉnh sửa">
+                            <i class="far fa-edit"></i>
+                        </a>
+
+                        <a onclick="ChiTietDH('@item.MaDH')" data-toggle="tooltip" title="Chi tiết đơn hàng">
+                            <i class="fas fa-cart-arrow-down"></i>
+                        </a>
+                        <button onclick="delete_article('@item.MaDH')" style="color:red" data-toggle="tooltip" title="Xóa đơn hàng">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                        <button onclick="ChiTietKH('@item.KHACHHANG.MaKH')" style="color:cadetblue" data-toggle="tooltip" title="Thông tin khách hàng">
+                            <i class="fa fa-user"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

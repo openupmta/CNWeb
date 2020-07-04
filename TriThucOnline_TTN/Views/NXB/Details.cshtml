@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TriThucOnline_TTN.Models.DAUSACH>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li class="breadcrumb-item"> <a href="@Url.Action("Index","NXB")">  Nhà Xuất Bản </a></li>
+    <li class="breadcrumb-item active">@ViewBag.TenNXB</li>
+</ul>
+
+<style>
+    .pic_book {
+        height: 66%;
+    }
+
+    .title_book {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 15%;
+    }
+
+    .price_book {
+        font-weight: 700;
+        font-size: 20px;
+        color: red;
+    }
+</style>
+
+<h2>Các đầu sách thuộc @ViewBag.TenNXB </h2>
+<div class="container">
+    <div class="row" style="display:flex">
+        @foreach (var item in Model)
+            {
+                
+            <div class="col-sm-2" style="height:300px;">
+                @*<td>@Model.Rows[i][0]</td>*@
+                <a href="@Url.Action("Details", "DAUSACH", new { @id = item.MaSach })">
+
+                    <img class="pic_book" src="@Url.Content("/Content/HinhAnhSP/" + @item.PicBook)" alt="Alternate Text" />
+                    <p class="title_book">@item.TenSach</p>
+                </a>
+                <p class="price_book">@item.GiaTien</p>
+
+            </div>
+        }
+    </div>
+</div>

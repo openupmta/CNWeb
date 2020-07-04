@@ -1,0 +1,27 @@
+﻿@using TriThucOnline_TTN.Models;
+@model List<TACGIA>
+
+<table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Mã tác giả:</th>
+            <th>Tên tác giả:</th>
+            <th>Ảnh tác giả:</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.MaTG</td>
+            <td>@item.TenTG</td>
+            <td>
+                <img src="@Url.Content("~/Content/HinhAnhTG/"+item.PicTG)" style="width: 150px; height: auto">
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

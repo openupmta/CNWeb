@@ -1,0 +1,30 @@
+﻿    @using TriThucOnline_TTN.Models;
+@model List<CT_DONHANG>
+
+<table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Mã sách:</th>
+            <th>Tên sách:</th>
+            <th>Ảnh bìa:</th>
+            <th>Số lượng:</th>
+            <th>Giá tiền:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.DAUSACH.MaSach</td>
+            <td>@item.DAUSACH.TenSach</td>
+            <td>
+                <img src="@Url.Content("~/Content/HinhAnhSP/"+item.DAUSACH.PicBook)" class="img-responsive" style="width: 150px; height: auto">
+            </td>
+            <td>@item.SoLuong</td>
+            <td>@item.DonGia</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

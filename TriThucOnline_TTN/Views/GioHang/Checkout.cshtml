@@ -1,0 +1,44 @@
+﻿
+@using TriThucOnline_TTN.Models;
+
+@model List<CartItem>
+
+
+<style>
+
+</style>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <img src="@Url.Content("/Content/HinhAnhSP/" + item.productOrder.PicBook)" alt="">
+        </td>
+        <td>
+            <a href="@Url.Action("Details", "DAUSACH", new { @id = item.productOrder.MaSach })"><p>@item.productOrder.TenSach</p></a>
+        </td>
+        <td style="text-align:center">
+            <div class="input-group soluong_giohang">
+                <p>@item.Quality</p>
+            </div>
+            
+        </td>
+        <td>
+            <p style="margin:5px">Thành Tiền </p>
+            <p style="color:#F11499">@string.Format("{0:0,0}", item.productOrder.GiaTien * item.Quality) VNĐ</p>
+        </td>
+    </tr>
+
+}
+@{double tongTien = 0;
+    foreach (var item in Model)
+    {
+        tongTien += (double)item.productOrder.GiaTien * item.Quality;
+    }
+}
+<script>
+        $(document).ready(function () {
+           
+            $("#totalprice").html('@string.Format("{0:0,0}", tongTien) VNĐ');
+            $("#totalpayment").html('@string.Format("{0:0,0}", tongTien) VNĐ');
+        });
+    </script>

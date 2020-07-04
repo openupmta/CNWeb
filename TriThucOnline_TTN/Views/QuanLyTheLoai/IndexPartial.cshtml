@@ -1,0 +1,49 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.THELOAI>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="text-primary">Mã</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Tên thể loại</span>
+                </th>
+                <th>
+                    <span class="text-primary">Chức năng</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaTL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenTL)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { @MaTheLoai = item.MaTL })">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    
+                        <a onclick="ChiTietCD('@item.MaTL')">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <button onclick="delete_article('@item.MaTL')" style="color:red">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+           
+        </tbody>
+    </table>
+</div>

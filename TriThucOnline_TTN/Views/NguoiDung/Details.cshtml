@@ -1,0 +1,216 @@
+﻿@model TriThucOnline_TTN.Models.KHACHHANG
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <style>
+        .user_detail--menu, .user_detail--content {
+            background: content-box;
+            background-color: white !important;
+            padding: 15px;
+        }
+
+        .user_detail--content--info {
+            padding: 15px;
+        }
+            .user_detail--content--info div{
+                margin: 15px 10px;
+            }
+            .user_detail--content--info label{
+                width:25%;
+            }
+            .user_detail--content--info input.thongtin-text {
+                height:30px;
+                border:1px solid #ccc;
+                border-radius:6px;
+                max-width:600px;
+                width:450px;
+                font-size:16px;
+                font-weight:600;
+            }
+
+            .logout{
+            width:90%;
+            margin:0 5%;
+        }
+        li.nav-item{
+            width:100%;
+        }
+        
+    
+</style>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3 user_detail--menu">
+            <ul class="nav nav-tabs" style="padding:0px;">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#thongtinchung" role="tab" data-toggle="tab" aria-selected="true">Thông tin tài khoản</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#diachi" role="tab" data-toggle="tab" aria-selected="true">Sổ địa chỉ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#donhang" role="tab" data-toggle="tab" aria-selected="true"  onclick="ShowOrder()">Đơn hàng của tôi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" role="tab" data-toggle="tab" aria-selected="true">Thông Báo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" role="tab" data-toggle="tab" aria-selected="true">Yêu Thích</a>
+                </li>
+                <li class="nav-item" style="padding-top:12px;">
+                    <button class="btn btn-outline-danger logout">
+                        Đăng Xuất
+                    </button>
+
+                </li>
+            </ul>
+        </div>
+            <div class="col-md-9 user_detail--content">
+                <div class="tab-content">
+                    <div class="container tab-pane fade show active" id="thongtinchung" role="tabpanel">
+                        <form class="user_detail--content--info" action="@Url.Action("Details", "NguoiDung")" method="post" enctype="multipart/form-data">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input class="thongtin-text" type="text" name="MaKH" value="@Model.MaKH" hidden />
+                            <input class="thongtin-text" type="text" name="Password" value="@Model.Password" hidden />
+                            <input class="thongtin-text" type="text" name="Username" value="@Model.Username" hidden />
+                            <div>
+                                <label>Họ Tên Khách Hàng</label>
+                                @*<input class="thongtin-text" type="text" name="TenKH" value="@Model.TenKH" />*@
+                                @Html.EditorFor(model => model.TenKH, new { htmlAttributes = new { @class = "thongtin-text" } })
+                                @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <label>Số Điện Thoại</label>
+                                <input class="thongtin-text" type="text" name="SDT" value="@Model.SDT" />
+                            </div>
+                            <div>
+                                <label>Địa chỉ</label>
+                                <input class="thongtin-text" type="text" name="DiaChi" value="@Model.DiaChi" />
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input class="thongtin-text" type="text" name="Email" value="@Model.Email" />
+                            </div>
+                            <div>
+                                <label> Ảnh Khách Hàng </label>
+                                @* lay ten anh trong database cho feild PicUser (tránh trường hợp không thêm ảnh mới) *@
+                                <input id="PicUser" name="PicUser" type="text" value="@Model.PicUser" hidden>
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px">
+                                    <img id="output" src="@Url.Content("~/Content/HinhAnhKH/" + Model.PicUser)" style="width: 200px; height: 150px">
+                                </div>
+                                <input type="file" class="form-control-file" name="fileUpload" value="@Model.PicUser" onchange="loadFile(event)" accept="image/*" />
+
+                                <script>
+                                    var loadFile = function (event) {
+                                        var image = document.getElementById('output');
+                                        image.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                                </script>
+                            </div>
+                            @*<div>
+            <label>Mật Khâu Hiện Tại</label>
+            <input class="thongtin-text" type="text" name="password_old" value="" placeholder="mật khẩu hiện tại" />
+        </div>*@
+                            <div>
+                                <label>Mật Khẩu Mới</label>
+                                <input class="thongtin-text" type="text" name="password_new" value="" placeholder="mật khẩu mới" />
+                            </div>
+                            <div>
+                                <label>Nhập Lại Mật Khẩu Mới</label>
+                                <input class="thongtin-text" type="text" name="re_password_new" value="" placeholder="nhập lại mật khẩu mới" />
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-primary" type="submit">
+                                    Lưu Lại
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="container tab-pane fade" id="diachi" role="tabpanel">
+                        <form class="user_detail--content--info" method="post" enctype="multipart/form-data">
+                            <input class="thongtin-text" type="text" name="MaKH" value="@Model.MaKH" hidden />
+                            <input class="thongtin-text" type="text" name="TenKH" value="@Model.TenKH" hidden />
+                            <input class="thongtin-text" type="text" name="Password" value="@Model.Password" hidden />
+                            <input class="thongtin-text" type="text" name="Username" value="@Model.Username" hidden />
+                            <input class="thongtin-text" type="text" name="Email" value="@Model.Email" hidden />
+                            <input class="thongtin-text" type="text" name="SDT" value="@Model.SDT" hidden />
+                            <input class="thongtin-text" type="text" name="PicUser" value="@Model.PicUser" hidden />
+                            <div>
+                                <label>Tỉnh/Thành Phố</label>
+                                @{ string tinh = "";
+                                    string huyen = "";
+                                    string xa = "";
+                                    string nha = ""; }
+                                @if (!string.IsNullOrEmpty(Model.DiaChi) && @Model.DiaChi.Split(',').Count() > 3)
+                                {
+                                    string[] vs = @Model.DiaChi.Split(',');
+                                    tinh = vs[vs.Count() - 1].ToString();
+                                    huyen = vs[vs.Count() - 2].ToString();
+                                    xa = vs[vs.Count() - 3].ToString();
+                                    for (int i = 0; i <= vs.Count() - 4; i++)
+                                        nha += vs[i] + ", ";
+                                }
+                                <input class="thongtin-text" type="text" id="diachi_tinh" name="diachi_tinh" value="@tinh.ToString()" />
+                            </div>
+                            <div>
+                                <label>Quận/Huyện</label>
+                                <input class="thongtin-text" type="text" id="diachi_huyen" name="diachi_huyen" value="@huyen.ToString()" />
+                            </div>
+                            <div>
+                                <label>Xã/Phường</label>
+                                <input class="thongtin-text" type="text" id="diachi_xa" name="diachi_xa" value="@xa.ToString()" />
+                            </div>
+                            <div>
+                                <label>Số nhà, đường cụ thể</label>
+                                <input class="thongtin-text" type="text" id="diachi_sonha" name="diachi_sonha" value="@nha" />
+                            </div>
+                            <div>
+                                <label>=> địa chỉ giao hàng</label>
+                                <input class="thongtin-text" type="text" id="DiaChi" name="DiaChi" value="@Model.DiaChi" />
+                            </div>
+
+                            <div>
+                                <button class="btn btn-outline-primary" type="submit">
+                                    Lưu Lại
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="container tab-pane fade" id="donhang" role="tabpanel">
+                        <div id="listOrder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script>
+    //$('#diachi_tinh, #diachi_huyen, #diachi_xa, #diachi_sonha').change(function () {
+    //        var str = "";
+    //        str = $("#diachi_sonha").val() + ", " + $("#diachi_sonha").val() + ", " + $("#diachi_huyen").val() + ", " + $("#diachi_tinh").val();
+    //        $("#DiaChi").val(str);
+    //});
+    $('#diachi_tinh, #diachi_huyen, #diachi_xa, #diachi_sonha').on('input', function (e) {
+        var str = "";
+        str = $("#diachi_sonha").val() + ", " + $("#diachi_xa").val() + ", " + $("#diachi_huyen").val() + ", " + $("#diachi_tinh").val();
+        $("#DiaChi").val(str);
+    });
+
+    function ShowOrder(page) {
+        $.ajax({
+            type: 'POST',
+            url: '/NguoiDung/IndexPartial',
+            data: { page: page },
+            success: function (data) {
+                $("#listOrder").html(data);
+                
+            }
+        });
+    }
+</script>

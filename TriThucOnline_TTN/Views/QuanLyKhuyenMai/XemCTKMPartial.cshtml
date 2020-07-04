@@ -1,0 +1,27 @@
+﻿@using TriThucOnline_TTN.Models;
+@model List<KHUYENMAI>
+
+<table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Mã khuyễn mãi:</th>
+            <th>Ngày bắt đầu:</th>
+            <th>Ngày kết thúc:</th>
+            <th>Giá trị khuyễn mãi (%):</th>
+            <th>Số lần còn lại:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.MaKM</td>
+            <td>@item.NgayBD.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.NgayKT.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.GiaTriKM</td>
+            <td>@item.SoLanConLai</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

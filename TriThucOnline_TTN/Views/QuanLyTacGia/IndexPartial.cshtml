@@ -1,0 +1,55 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.TACGIA>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="text-primary">Mã</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Tên tác giả</span>
+                </th>
+                <th>
+                    <span class="text-primary">Ảnh tác giả</span>
+                </th>
+                <th>
+                    <span class="text-primary">Chức năng</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaTG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenTG)
+                    </td>
+                    <td>
+                        <img src="@Url.Content("~/Content/HinhAnhTG/"+item.PicTG)" class="img-responsive" style="width: 150px; height: auto"/>
+                     </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { @MaTacGia = item.MaTG })">
+                            <i class="far fa-edit"></i>
+                        </a>
+
+                        <a onclick="ChiTietTG('@item.MaTG')">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <button onclick="delete_article('@item.MaTG')" style="color:red">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

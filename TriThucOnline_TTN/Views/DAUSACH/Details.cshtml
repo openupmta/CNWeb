@@ -1,0 +1,128 @@
+﻿@model TriThucOnline_TTN.Models.DAUSACH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("/Assets/User/css/style_details_dausach.css")
+
+            
+
+<div class="container">
+    <div class="row" style="background-color: white; padding: 20px 5px; margin-top:20px">
+
+
+        <div class="col-md-5" style="text-align:center">
+            <div class="book__image">
+                <img src="@Url.Content("/Content/HinhAnhSP/" + Model.PicBook)" alt="Alternate Text" />
+            </div>
+            <div class="button-buy">
+                <button class="button-buy--cart" onclick="AddToCart('@Model.MaSach')">
+                    <i class="fas fa-cart-plus"></i>
+                    Thêm vào giỏ hàng
+                </button>
+                <button class="button-buy--buy" onclick="AddToCart('@Model.MaSach'), location.href='@Url.Action("Index", "GioHang")'">
+                    Mua ngay
+
+                </button>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h3 class="book__name">
+                @Html.DisplayFor(model => model.TenSach)
+            </h3>
+            <div class="book__vote">
+                <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+            </div>
+            <ul class="col-sm-7">
+                <li>
+                    <p class="book__NXB">
+                        Nhà xuất bản :
+                        <a href="@Url.Action("Details", "NXB", new { @id = @Model.NXB.MaNXB })">
+                            @Html.DisplayFor(model => model.NXB.TenNXB)
+                        </a>
+                    </p>
+                </li>
+                <li>
+                    <p class="book__tacgia">
+                        Tác giả :
+                        <a href="@Url.Action("Details", "TACGIA", new { @id = @Model.MaTG })">
+                            @Html.DisplayFor(model => model.TACGIA.TenTG)
+                        </a>
+                    </p>
+                </li>
+            </ul>
+            <ul class="col-sm-5">
+                <li>
+                    <p class="book__theloai">
+                        Thể Loại :
+                        <a href="@Url.Action("Details", "THELOAI", new { @id = @Model.MaTL })">
+                            @Html.DisplayFor(model => model.THELOAI.TenTL)
+                        </a>
+                    </p>
+                </li>
+                <li>
+                    <p class="book__NamXuatBan">
+                        Năm xuất bản : @Html.DisplayFor(model => model.NamXuatBan)
+                    </p>
+                </li>
+            </ul>
+
+            <p class="book__GiaTien">
+                @string.Format("{0:0,0}", Model.GiaTien) VNĐ
+            </p>
+            <form class="book__amount" action="">
+                <label for="quantity"> Số lượng :</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="@Model.SoLuongTon">
+            </form>
+            <label>Còn lại @Model.SoLuongTon sản phẩm</label>
+        </div>
+    </div>
+    <div class="book__information">
+        <p style="font-size:20px;font-weight:600;">Thông tin sản phẩm </p>
+        <table>
+            <tr>
+                <th>Tên sách </th>
+                <td>@Html.DisplayFor(model => model.TenSach)</td>
+            </tr>
+            <tr>
+                <th>Số Trang </th>
+                <td>@Html.DisplayFor(model => model.SoTrang)</td>
+            </tr>
+            <tr>
+                <th>Tác giả </th>
+                <td>@Html.DisplayFor(model => model.TACGIA.TenTG)</td>
+            </tr>
+            <tr>
+                <th>Nhà xuất bản </th>
+                <td>@Html.DisplayFor(model => model.NXB.TenNXB)</td>
+            </tr>
+        </table>
+        <hr />
+        @{Html.RenderAction("SachLienQuan", new { id = Model.THELOAI.MaTL });}
+        <div class="book__intro">
+            <div class="book__intro-tacgia">
+                <p style="font-size:20px;font-weight:600;">VỀ TÁC GIẢ</p>
+                <img src="@Url.Content("/Content/HinhAnhTG/" + Model.TACGIA.PicTG)" />
+                <i>
+                    “ @*@Html.DisplayFor(model => model.TrichDan)*@
+
+                    @Html.DisplayFor(model => model.TACGIA.ThongTinGioiThieu)
+                    ”
+                </i>
+            </div>
+            <div class="book__intro--dausach">
+                @*@Html.DisplayFor(model => model.BoCucSach)*@
+                <b style="font-size:20px;font-weight:600;">GIỚI THIỆU SÁCH</b>
+                <p>
+                    @Html.DisplayFor(model => model.TrichDan)
+                </p>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>

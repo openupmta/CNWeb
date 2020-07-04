@@ -1,0 +1,49 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<TriThucOnline_TTN.Models.KHUYENMAI>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="text-primary">Mã khuyễn mãi</span>
+
+                </th>
+                <th>
+                    <span class="text-primary">Giá trị khuyễn mãi (%)</span>
+                </th>
+                <th>
+                    <span class="text-primary">Chức năng</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaKM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GiaTriKM)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { @VoucherCode = item.MaKM })">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    
+                        <a onclick="ChiTietKM('@item.MaKM')">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <button onclick="delete_article('@item.MaKM')" style="color:red">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+           
+        </tbody>
+    </table>
+</div>

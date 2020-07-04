@@ -1,0 +1,16 @@
+﻿@using TriThucOnline_TTN.Models;
+@{ 
+    SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+    var sum = (from s in db.KHACHHANGs
+               select s).Count();
+    var sumAdmin = (from s in db.QUANTRIVIENs
+                    select s).Count();
+}
+<div class="col-md-3 col-sm-3 col-xs-6">
+    <a data-toggle="tooltip" title="6 new members." class="well top-block" href="#">
+        <i class="glyphicon glyphicon-user blue"></i>
+        <div>Tổng thành viên</div>
+        <div>@sum</div>
+        <span class="notification">@sumAdmin Admin</span>
+    </a>
+</div>

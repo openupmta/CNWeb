@@ -1,0 +1,95 @@
+﻿@model TriThucOnline_TTN.Models.DAUSACH
+
+@{
+    ViewBag.Title = "HienThi";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+<h2>HienThi</h2>
+
+<div>
+    <h4>Sach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrichDan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrichDan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PicBook)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.AnhBia)*@
+            <div class="fileinput fileinput-new"  style="height:180px">
+                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 180px">
+                    <img src="@Url.Content("~/Content/HinhAnhSP/"+Model.PicBook)">
+                </div>
+            </div>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Moi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THELOAI.TenTL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THELOAI.TenTL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NXB.TenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NXB.TenNXB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaSach }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

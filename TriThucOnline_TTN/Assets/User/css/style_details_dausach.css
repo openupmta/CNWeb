@@ -1,0 +1,85 @@
+﻿
+
+* {
+    box-sizing: border-box;
+}
+
+.book__image {
+    text-align: center;
+}
+
+    .book__image img {
+        border: 1px solid #EAE8E8;
+        padding: 20px 70px;
+        max-width: 450px;
+    }
+
+.book__name {
+    font-weight: 600;
+}
+
+.book__GiaTien {
+    font-size: 32px;
+    font-weight: 700;
+    color: #b70046;
+}
+
+.book__amount {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.book__vote {
+    padding-bottom: 15px;
+}
+
+.book__amount input {
+    padding-left: 15px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.book__intro-tacgia img {
+    max-width: 180px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+}
+
+.book__information {
+    margin-top: 35px;
+}
+
+    .book__information table {
+        margin-left: 30px;
+        margin-top: 20px;
+        width: 80%;
+    }
+
+    .book__information td, th {
+        border-top: 1px solid #EAE8E8;
+        line-height: 40px;
+    }
+
+.button-buy {
+    margin-top: 10px;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.button-buy--cart {
+    border: 2px solid #b70046;
+    border-radius: 30px;
+    padding: 0 25px;
+    float: left;
+    color: #b70046;
+}
+
+.button-buy--buy {
+    border-radius: 30px;
+    background-color: #b70046;
+    color: white;
+    padding: 0 55px;
+}
