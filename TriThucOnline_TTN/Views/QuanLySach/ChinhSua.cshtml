@@ -3,6 +3,7 @@
     ViewBag.Title = "ChinhSua";
     Layout = "~/Views/Shared/_LayoutAmin.cshtml";
 }
+<script src="~/Content/ckeditor/ckeditor.js"></script>
 
 <h2>Chỉnh sửa sách</h2>
 @using (Html.BeginForm("ChinhSua", "QuanLySach", FormMethod.Post, new { @enctype = "multipart/form-data" }))
@@ -71,10 +72,20 @@
     </div>
 
     <div class="form-group">
-        <span class="control-label col-md-3"><strong>Thể loại(*)</strong></span>
+        <span class="control-label col-md-3"><strong>khoá học(*)</strong></span>
         <div class="col-md-6">
-            @Html.DropDownListFor(Model => Model.MaTL, (SelectList)ViewBag.MaTL, "-- Chọn thể loại --", new { @class = "form-control" })
-            @Html.ValidationMessageFor(Model => Model.MaTL, "", new { @class = "text-danger" })
+            <select class="form-control" name="group_role_id">
+                @foreach (var item in ViewBag.ViewKHOAHOC)
+                {
+                    var select = "";
+                    if (item.ID == Model.MaKhoaHoc)
+                    {
+                        select = "selected";
+                    }
+                    <option @select value="@item.ID">@item.Name</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(Model => Model.MaKhoaHoc, "", new { @class = "text-danger" })
 
         </div>
     </div>
@@ -82,7 +93,17 @@
     <div class="form-group">
         <span class="control-label col-md-3"><strong>Nhà xuất bản(*)</strong></span>
         <div class="col-md-6">
-            @Html.DropDownListFor(model => model.MaNXB, (SelectList)ViewBag.MaNXB, "-- Chọn NXB --", new { @class = "form-control" })
+            <select class="form-control" name="group_role_id">
+                @foreach (var item in ViewBag.ViewNXB)
+                {
+                    var select = "";
+                    if (item.ID == Model.MaNXB)
+                    {
+                        select = "selected";
+                    }
+                    <option @select value="@item.ID">@item.Name</option>
+                }
+            </select>
             @Html.ValidationMessageFor(Model => Model.MaNXB, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -90,7 +111,17 @@
     <div class="form-group">
         <span class="control-label col-md-3"><strong>Tác giả(*)</strong></span>
         <div class="col-md-6">
-            @Html.DropDownListFor(Model => Model.MaTG, (SelectList)ViewBag.MaTG, new { @class = "form-control" })
+            <select class="form-control" name="group_role_id">
+                @foreach (var item in ViewBag.ViewTacGia)
+                {
+                    var select = "";
+                    if (item.ID== Model.MaTG)
+                    {
+                        select = "selected";
+                    }
+                    <option @select value="@item.ID">@item.Name</option>
+                }
+            </select>
             @Html.ValidationMessageFor(Model => Model.MaTG, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -144,4 +175,4 @@
     @Html.ActionLink("Trở về", "Index")
 </div>
 
-
+<script>CKEDITOR.replace("TrichDan")</script>

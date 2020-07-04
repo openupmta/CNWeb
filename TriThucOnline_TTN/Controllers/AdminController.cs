@@ -13,7 +13,7 @@ namespace TriThucOnline_TTN.Controllers
 {
     public class AdminController : Controller
     {
-        private SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        private SQL_KhoaHoc db = new SQL_KhoaHoc();
 
         [Authorize]
         public ActionResult Index()

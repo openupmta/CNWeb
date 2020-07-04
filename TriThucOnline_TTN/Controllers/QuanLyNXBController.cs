@@ -13,19 +13,19 @@ namespace TriThucOnline_TTN.Controllers
     public class QuanLyNXBController : Controller
     {
         // GET: QuanLyNXB
-        SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
-        public ActionResult Index(int? page)
+        SQL_KhoaHoc db = new SQL_KhoaHoc();
+        public ActionResult Index(int PageNum = 1, int PageSize = 5, string search = null)
         {
-            int pageNumber = (page ?? 1);
-            int pageSize = 10;
-            return View(db.NXBs.ToList().OrderBy(n => n.MaNXB).ToPagedList(pageNumber, pageSize));
+            ViewBag.PageSize = PageSize;
+            var lst = db.Database.SqlQuery<NXB>("select tl.* from NXB as tl").ToList();
+
+            if (search != null)
+            {
+                lst = lst.Where(x => x.TenNXB.ToLower().Trim().Contains(search.ToLower().Trim())).OrderByDescending(x => x.TenNXB).ToList();
+            }
+            return View(lst.ToList().ToPagedList<NXB>(PageNum, PageSize));
         }
-        public PartialViewResult IndexPartial(int? page)
-        {
-            int pageNumber = (page ?? 1);
-            int pageSize = 10;
-            return PartialView(db.NXBs.ToList().OrderBy(n => n.MaNXB).ToPagedList(pageNumber, pageSize));
-        }
+       
         /// <summary>
         /// Tao moi
         /// </summary>
@@ -54,10 +54,10 @@ namespace TriThucOnline_TTN.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int MaNXB)
+        public ActionResult Edit(int id)
         {
             //Lấy ra đối tượng sách theo mã 
-            NXB nxb = db.NXBs.SingleOrDefault(n => n.MaNXB == MaNXB);
+            NXB nxb = db.NXBs.SingleOrDefault(n => n.MaNXB == id);
             if (nxb == null)
             {
                 Response.StatusCode = 404;
@@ -82,27 +82,10 @@ namespace TriThucOnline_TTN.Controllers
                 ViewBag.ThongBao = "Lỗi";
                 return View(nxb);
             }
-
             return RedirectToAction("Index");
-
         }
 
-        [HttpPost]
-        public JsonResult XemCTNXB(int manxb)
-        {
-            TempData["manxb"] = manxb;
-            return Json(new { Url = Url.Action("XemCTNXBPartial") });
-        }
-        public PartialViewResult XemCTNXBPartial()
-        {
-            int maNXB = (int)TempData["manxb"];
-            var lstNXB = db.NXBs.Where(n => n.MaNXB == maNXB).ToList();
-            return PartialView(lstNXB);
-        }
-
-        /////////////////////
-        [HttpPost]
-        public JsonResult Remove(int id)
+        public ActionResult Delete(int id)
         {
             NXB nxb = db.NXBs.SingleOrDefault(n => n.MaNXB == id);
             if (nxb == null)
@@ -112,7 +95,8 @@ namespace TriThucOnline_TTN.Controllers
             }
             db.NXBs.Remove(nxb);
             db.SaveChanges();
-            return Json(new { Url = Url.Action("IndexPartial") });
+            return RedirectToAction("Index");
+
         }
     }
 }

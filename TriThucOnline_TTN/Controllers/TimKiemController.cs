@@ -11,7 +11,7 @@ namespace TriThucOnline_TTN.Controllers
 {
     public class TimKiemController : Controller
     {
-        SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        SQL_KhoaHoc db = new SQL_KhoaHoc();
         //[HttpPost]
         //public ActionResult TimKiem()
         //{
@@ -24,7 +24,7 @@ namespace TriThucOnline_TTN.Controllers
             ViewBag.Key = Key;
             
           //  List<Sach> lsKQTK = db.Saches.Where(m => m.TenSach.Contains(Key)).ToList();           
-            List<DAUSACH> lsKQTK = db.DAUSACHes.Where(n => n.TenSach.Contains(Key) || n.THELOAI.TenTL.Contains(Key) || n.NXB.TenNXB.Contains(Key)).ToList();
+            List<DAUSACH> lsKQTK = db.DAUSACHes.Where(n => n.TenSach.Contains(Key) || n.KHOAHOC.TenKhoaHoc.Contains(Key) || n.NXB.TenNXB.Contains(Key)).ToList();
             ViewBag.TuKhoa = Key;
             int pageNumber = (page ?? 1);
             int pageSize = 12;
@@ -45,7 +45,7 @@ namespace TriThucOnline_TTN.Controllers
         {
             string Key = f["txtTimKiem"].ToString();
             //List<Sach> lsKQTK = db.Saches.Where(m => m.TenSach.Contains(Key)).ToList();
-            List<DAUSACH> lsKQTK = db.DAUSACHes.Where(n => n.TenSach.Contains(Key) || n.THELOAI.TenTL.Contains(Key) || n.NXB.TenNXB.Contains(Key)).ToList();
+            List<DAUSACH> lsKQTK = db.DAUSACHes.Where(n => n.TenSach.Contains(Key) || n.KHOAHOC.TenKhoaHoc.Contains(Key) || n.NXB.TenNXB.Contains(Key)).ToList();
             ViewBag.Key = Key;
             int pageNumber = (page ?? 1);
             int pageSize = 12;

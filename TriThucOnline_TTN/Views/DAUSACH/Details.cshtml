@@ -55,10 +55,10 @@
             </ul>
             <ul class="col-sm-5">
                 <li>
-                    <p class="book__theloai">
-                        Thể Loại :
-                        <a href="@Url.Action("Details", "THELOAI", new { @id = @Model.MaTL })">
-                            @Html.DisplayFor(model => model.THELOAI.TenTL)
+                    <p class="book__KHOAHOC">
+                        khoá học :
+                        <a href="@Url.Action("Details", "KHOAHOC", new { @id = @Model.MaKhoaHoc })">
+                            @Html.DisplayFor(model => model.KHOAHOC.TenKhoaHoc)
                         </a>
                     </p>
                 </li>
@@ -100,7 +100,7 @@
             </tr>
         </table>
         <hr />
-        @{Html.RenderAction("SachLienQuan", new { id = Model.THELOAI.MaTL });}
+        @{Html.RenderAction("SachLienQuan", new { id = Model.KHOAHOC.MaKhoaHoc });}
         <div class="book__intro">
             <div class="book__intro-tacgia">
                 <p style="font-size:20px;font-weight:600;">VỀ TÁC GIẢ</p>

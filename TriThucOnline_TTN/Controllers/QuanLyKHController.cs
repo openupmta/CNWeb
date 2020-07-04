@@ -16,7 +16,7 @@ namespace TriThucOnline_TTN.Controllers
     public class QuanLyKHController : Controller
     {
         // GET: QuanLyKH
-        SQL_TriThucOnline_BanSachEntities db = new SQL_TriThucOnline_BanSachEntities();
+        SQL_KhoaHoc db = new SQL_KhoaHoc();
         public ActionResult Index(int? page)
         {
             int pageNumber = (page ?? 1);
