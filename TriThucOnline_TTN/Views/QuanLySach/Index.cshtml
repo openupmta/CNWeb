@@ -30,17 +30,24 @@
     .img-responsive {
         width: 50px;
     }
+
+    .them-timkiem{
+        display : flex;
+        justify-content:space-between;
+        flex-direction : row-reverse;
+        margin : 12px 0px;
+    }
 </style>
 <h2>Quản lý Sách</h2>
 
-<p>
+<div class="them-timkiem">
     @*@Html.ActionLink("Thêm mới sách", "ThemMoi")*@
-    <a href="@Url.Action("ThemMoi")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Thêm sách</a>
+    <a href="@Url.Action("ThemMoi")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Thêm khóa học</a>
     <form class="form-inline" action="/QuanLySach/search">
         <input class="form-control mr-sm-2" type="search" name="search" id="search" value="@ViewBag.search" placeholder="Tên sách ...">
         <a href="@Url.Action("Search")" class="btn btn-success"> Tìm kiếm</a>
     </form>
-</p>
+</div>
 <div id="Xoa_Sach">
     @{ Html.RenderPartial("IndexPartial");}
 </div>

@@ -160,6 +160,17 @@
             right: 3px;
             font-size: 16px;
         }
+        .img-logo {
+            color: #1d2e62 !important;
+            width: 70px;
+        }
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            margin-left: 15%;
+        }
     </style>
 
 </head>
@@ -171,16 +182,16 @@
     <!--NAVBAR - TOP -->
 
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand" href="@Url.Action("Index","Home")">
-            <img src="~/Assets/User/image/LogoABC.png" alt="logo" />
-        </a>
+        @*<a class="navbar-brand" href="@Url.Action("Index","Home")">
+            
+        </a>*@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index","Home")">Trang Chủ</a>
+                    <a class="nav-link" href="@Url.Action("Index","Home")"><img src="~/Assets/User/image/LogoABC.png" alt="logo" class="img-logo" /></a>
                 </li>
 
                 <li class="nav-item">
@@ -193,11 +204,12 @@
 
                 @if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString().Trim() == "")//!User.Identity.IsAuthenticated)
                 {
-                    <li class="nav-item">
-                        <a class="nav-link home-signup" href="@Url.Action("Register", "NguoiDung")">Đăng Ký</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link home-login" href="@Url.Action("Login", "NguoiDung")">Đăng Nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link home-signup" href="@Url.Action("Register", "NguoiDung")">Đăng Ký</a>
                     </li>
                 }
                 else
@@ -443,7 +455,9 @@
         }
 
         function CapNhat(Id) {
+            
             var soluong = document.getElementById("SoLuong[" + Id + "]").value;
+            console.log("Id: " + soluong)
             $.ajax({
                 type: 'POST',
                 url: '/GioHang/CapNhat',

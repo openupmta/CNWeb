@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Details - Thể Loại";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
 }
 
 <style>
@@ -17,47 +18,78 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         height: 15%;
+        padding : 0 4px;
     }
 
     .price_book {
         font-weight: 700;
         font-size: 20px;
         color: red;
+        padding : 0 4px;
     }
 
-    .breadcrumb{
-        margin-left : 359px;
+    .breadcrumb {
     }
 
     .name_course {
-        margin-left: 359px;
-        padding : 8px 0;
-        margin-bottom : 12px;
+        padding: 8px 0;
+        margin-bottom: 12px;
     }
+    .pic_book{
+        width : 100%;
+    }
+
 </style>
 
-<ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
-    <li class="breadcrumb-item"> <a href="@Url.Action("Index","THELOAI")"> Thể Loại </a></li>
-    <li class="breadcrumb-item active">@ViewBag.TenTL</li>
-</ul>
 
 
-<h2 class="name_course">Khóa Học @ViewBag.TenTL </h2>
+
+
 <div class="container">
+
     <div class="row" style="display:flex">
-        @foreach (var item in Model)
-        {
-            <div class="col-sm-2" style="height:300px;">
-                @*<td>@Model.Rows[i][0]</td>*@
-                <a href="@Url.Action("Details", "DAUSACH", new { @id = item.MaSach })">
+        <div class="col-12" style="padding : 0">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li class="breadcrumb-item"> <a href="@Url.Action("Index","THELOAI")"> Thể Loại </a></li>
+                <li class="breadcrumb-item active">@ViewBag.TenTL</li>
+            </ul>
+        </div>
+        <div class="col-12" style="padding : 0">
+            <h2 class="name_course">Khóa Học @ViewBag.TenTL </h2>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="row" style="display:flex">
+            @foreach (var item in Model)
+            {
 
-                    <img class="pic_book" src="@Url.Content("/Content/HinhAnhSP/" + @item.PicBook)" alt="Alternate Text" />
-                    <p class="title_book">@item.TenSach</p>
-                </a>
-                <p class="price_book">@item.GiaTien</p>
+                
+                if (count == 0)
+                {
+                    <div class="col-sm-2">
+                    </div>
+                }
+                count++;
+                <div class="col-2" >
+                    <div id ="book-item" style="height:300px; background: #fff;border-radius: 8px;margin-bottom: 20px; overflow : hidden">
+                        <a href="@Url.Action("Details", "DAUSACH", new { @id = item.MaSach })">
 
-            </div>
-        }
+                            <img class="pic_book" src="@Url.Content("/Content/HinhAnhSP/" + @item.PicBook)" alt="Alternate Text" />
+                            <p class="title_book">@item.TenSach</p>
+                        </a>
+                        <p class="price_book">@string.Format("{0:0,0}", @item.GiaTien) VNĐ</p>
+                    </div>
+                       
+                </div>
+                if (count == 4)
+                {
+                    <div class="col-sm-2">
+                    </div>
+                    count = 0;
+                }
+
+            }
+        </div>
     </div>
 </div>

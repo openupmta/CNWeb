@@ -5,12 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
-    <li class="breadcrumb-item"> <a href="@Url.Action("Index","NXB")">  Nhà Xuất Bản </a></li>
-    <li class="breadcrumb-item active">@ViewBag.TenNXB</li>
-</ul>
-
 <style>
     .pic_book {
         height: 66%;
@@ -31,12 +25,21 @@
     }
 </style>
 
-<h2>Các đầu sách thuộc @ViewBag.TenNXB </h2>
 <div class="container">
     <div class="row" style="display:flex">
+        <div class="col-12">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li class="breadcrumb-item"> <a href="@Url.Action("Index","NXB")">  Nhà Xuất Bản </a></li>
+                <li class="breadcrumb-item active">@ViewBag.TenNXB</li>
+            </ul>
+        </div>
+        <div class="col-12">
+            <h2 class="name_course">Khóa Học @ViewBag.TenNXB </h2>
+        </div>
         @foreach (var item in Model)
-            {
-                
+        {
+
             <div class="col-sm-2" style="height:300px;">
                 @*<td>@Model.Rows[i][0]</td>*@
                 <a href="@Url.Action("Details", "DAUSACH", new { @id = item.MaSach })">
